@@ -1,1 +1,64 @@
-<p>quiz works!</p>
+<div *ngIf="paginaAtual === 'quiz'">
+<form id="form1">
+    <p>Qual é o seu tom de pele?</p>
+    <input type="radio" id="pele1" name="pele" value="fria">
+    <label for="pele1">Fria</label><br>
+    <input type="radio" id="pele2" name="pele" value="quente">
+    <label for="pele2">Quente</label><br>
+    <input type="radio" id="pele3" name="pele" value="neutra">
+    <label for="pele3">Neutra</label><br>
+  </form>
+  
+  <form id="form2">
+    <p>Qual é o seu tom de cabelo?</p>
+    <input type="radio" id="cabelo1" name="cabelo" value="preto">
+    <label for="cabelo1">Preto</label><br>
+    <input type="radio" id="cabelo2" name="cabelo" value="castanho">
+    <label for="cabelo2">Castanho</label><br>
+    <input type="radio" id="cabelo3" name="cabelo" value="ruivo">
+    <label for="cabelo3">Ruivo</label><br>
+    <input type="radio" id="cabelo4" name="cabelo" value="loiro">
+    <label for="cabelo4">Loiro</label><br>
+  </form>
+  
+  <form id="form3">
+    <p>Qual é a cor dos olhos?</p>
+    <input type="radio" id="olhos1" name="olhos" value="verde">
+    <label for="olhos1">Verde</label><br>
+    <input type="radio" id="olhos2" name="olhos" value="azul">
+    <label for="olhos2">Azul</label><br>
+    <input type="radio" id="olhos3" name="olhos" value="castanho">
+    <label for="olhos3">Castanho</label><br>
+    <input type="radio" id="olhos4" name="olhos" value="preto">
+    <label for="olhos4">Preto</label><br>
+  </form>
+  
+  <form id="form4">
+    <p>Qual é a cor das veias?</p>
+    <input type="radio" id="veias1" name="veias" value="verde">
+    <label for="veias1">Verde</label><br>
+    <input type="radio" id="veias2" name="veias" value="azul">
+    <label for="veias2">Azul</label>
+    <br>
+    <button (click)="salvarRespostas() " (click)="trocarPagina('resultados')">Mostrar Resultados</button>
+  </form>
+</div>
+
+    <div *ngIf="paginaAtual === 'resultados'">
+        <h1>{{respostaPele}}</h1>
+      
+        <div *ngFor="let resposta of respostas">
+          <div *ngIf="resposta.respostaPele === 'fria'">
+            Texto para pele fria e cabelo preto
+          </div>
+        </div>
+      
+        <button (click)="trocarPagina('quiz')">Voltar para Quiz</button>
+      </div>
+
+
+
+
+  <br>
+  
+  
