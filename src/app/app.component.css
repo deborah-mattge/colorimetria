@@ -1,1 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&display=swap');
 
+header{
+    background-color: #131921;
+    padding: 0.5%;
+    
+}
+
+nav{
+    background-color: #131921;
+   
+}
+
+.botoes{
+    font-family: 'Didact Gothic', sans-serif;
+
+    padding: 0.5%;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 15px;
+    border-color: #131921;
+    background-color: white;
+    color: #131921;
+    cursor: pointer;
+    
+    
+}
+a{
+    background-color: #131921;
+}
