@@ -3,8 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
 
-
-*{
+body{
     background-color: #EFEFEF;
     margin: 0px;
     padding: 0px;
@@ -19,12 +18,15 @@ header{
     border-radius: 1px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding-left: 50px;
+    
 
     
 }
 nav{
     padding: 10px;
+   
     background-color: #1D2530;
+    justify-content: space-between  ;
     
 }
 .botoes{
