@@ -1,6 +1,49 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+
 *{
     background-color: #EFEFEF;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+header{
+    background-color: #1D2530;
+    padding: 10px;
+    display: block;
+    justify-content: end;
+    border-radius: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding-left: 50px;
+
+    
 }
 nav{
+    padding: 10px;
+    background-color: #1D2530;
     
+}
+.botoes{
+    font-family: 'Didact Gothic', sans-serif;
+    font-family: 'Cinzel Decorative', cursive;
+    text-transform:lowercase;
+
+    padding: 0.5%;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    border-color: #131921;
+  
+    color: #131921;
+    cursor: pointer;
+    
+    
+}
+a{
+    background-color: #131921;
 }
