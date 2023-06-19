@@ -16,7 +16,7 @@ header{
     display: block;
     justify-content: end;
     border-radius: 1px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   
     padding-left: 50px;
     
 
@@ -33,19 +33,19 @@ nav{
     font-family: 'Didact Gothic', sans-serif;
     font-family: 'Cinzel Decorative', cursive;
     text-transform:lowercase;
-
     padding: 0.5%;
     font-size: 13px;
     font-weight: bold;
     text-align: center;
     border-radius: 5px;
-    border-color: #131921;
-  
-    color: #131921;
+   
+    background-color: #1D2530;
+    color: #ffffff;
     cursor: pointer;
     
     
 }
 a{
-    background-color: #131921;
+    background-color: #1D2530;
+    margin-right: 5px
 }

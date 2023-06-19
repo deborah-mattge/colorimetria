@@ -10,11 +10,13 @@ body{
     margin-top: 0px;
     display: flex;
     flex-wrap: wrap;
+    margin-left: 50px;
+   
     
 }
 form{
     margin: 5%;
-    width: 35%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
+    width: 30%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
     text-align: left;
     border: 5px solid #EFEFEF;
     padding: 2%;
@@ -32,16 +34,14 @@ form{
 #form3{
     margin-left: 5%;
 }
-#form2{
-    margin-right: 0px;
-}
+
 h1{
     font-family: 'Chonburi', cursive;
-    font-size: 66px;
+    font-size: 55px;
     font-weight: 100;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 30px;
+    padding: 0px;
     margin: 0px;
     background-color: #13192100;
     text-align: center;
@@ -75,6 +75,36 @@ button{
     
 }
 .botao{
+    display: flex;
+    justify-content: center;
+}
+.subtitulo{
+    width: 60%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
+    text-align: left;
+    border: 5px solid #EFEFEF;
+    margin: 2%;
+    padding-left: 3%;
+    margin-left: 0PX;
+    font-family: 'Didact Gothic', sans-serif;
+    background-color: #8d8d8db6;
+    border-radius: 30px;
+    position: relative;
+    text-align: left;
+    font-size: 60px;
+    font-weight:400;
+    text-transform: uppercase;
+    color: white;
+
+
+}
+img{
+    height: 50%;
+    width: 75%;
+}
+.imagens{
+   
+}
+#ng-container{
     display: flex;
     justify-content: center;
 }
