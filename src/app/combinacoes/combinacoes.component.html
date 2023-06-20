@@ -1,5 +1,6 @@
 <p>combinacoes works!</p>
 
+
 <form id="form1">
     <p>Qual é a peça?</p>
     <input type="radio" id="peca1" name="peca" value="Blusa">
@@ -13,6 +14,7 @@
     <input type="radio" id="peca5" name="peca" value="Jaqueta">
     <label for="peca">Jaqueta</label><br>
   </form>
+
 
   <form id="form2">
     <p>Qual é a cor da peça?</p>
@@ -45,19 +47,14 @@
     <input type="radio" id="cor14" name="cor" value="Cinza">
     <label for="cor14">Cinza</label><br>
   </form>
-  <button>Ver combinações</button>
-  <br>
-    
-    <button (click)="trocarPagina('resultados')">Mostrar minha paleta</button>
+  <button (click)="salvarRespostas()" (click)="trocarPagina('combinacoesResult')"
+  (click)="definirCorDeFundo()">Ver combinações</button>
+<button (click)="trocarPagina('resultados')">Mostrar minha paleta</button>
+
 
     <div *ngIf="paginaAtual === 'resultados'">
         <h1>Sua paleta de cores é:</h1>
-        <h2>{{ respostasPaletas }}</h2>
-        <p>Tom de pele: {{ respostas.respostaPele }}</p>
-        <p>Tom de cabelo: {{ respostas.respostaCabelo }}</p>
-        <p>Cor dos olhos: {{ respostas.respostaOlhos }}</p>
-        <p>Cor das veias: {{ respostas.respostaVeias }}</p>
-        
+       
         <ng-container *ngIf="respostasPaletas === 'Primavera Quente'">
             <img [src]="'src/assets/primaveraq.jpg'">
           </ng-container>
@@ -94,7 +91,16 @@
           <ng-container *ngIf="respostasPaletas === 'Inverno Puro'">
             <img [src]="'src/assets/invernopuro.jpg'">
           </ng-container>
-          <a href="http://localhost:4200/quiz"><button class="botoes" 
+          <a href="http://localhost:4200/quiz"><button class="botoes"
             (click)="cadastrarCategorias()">Refazer o Quiz</button></a>
+    </div>
+            <div *ngIf="paginaAtual === 'combinacoesResult'">
+              <div [style.background-color]="corDeFundo">
+                  Conteúdo da div
+                </div>
+             
+              </div>
+            <br>
+
 
 
