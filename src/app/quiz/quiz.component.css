@@ -8,9 +8,8 @@ body{
 #tudo{
 
     margin-top: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 50px;
+    
+    margin-left: 70px;
    
     
 }
@@ -28,11 +27,26 @@ form{
     text-align: left;
     margin-top: 3%;
 }
+#formulario{
+    margin: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0px;
+    padding: 0px;
+    width:100%;
+    margin-left: 2% ;
+}
 #form1{
     margin-left: 5%;
 }
 #form3{
     margin-left: 5%;
+}
+#form4{
+    margin-right: 0px;
+}
+#form2{
+    margin-right: 0px;
 }
 
 h1{
@@ -42,7 +56,7 @@ h1{
     letter-spacing: 2px;
     text-transform: uppercase;
     padding: 0px;
-    margin: 0px;
+    margin: 25px;
     background-color: #13192100;
     text-align: center;
 
