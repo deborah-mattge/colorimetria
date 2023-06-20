@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
-import { ContaComponent } from './conta/conta.component';
+import { ContaComponent } from "./conta/conta.component";
 import { QuizComponent } from './quiz/quiz.component';
 import { CombinacoesComponent } from './combinacoes/combinacoes.component';
 import { AppRoutingModule } from './approuting.module';
@@ -24,7 +24,7 @@ import { AppRoutingModule } from './approuting.module';
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [ContaComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

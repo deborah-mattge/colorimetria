@@ -6,15 +6,7 @@
     <br>
     <h5 (click)="valida()">Não possuo conta</h5>
   
-    <a href="http://localhost:4200/quiz"><button (click)="validarConta()" (click)="cadastrarCategorias()">COMEÇAR TESTE</button></a>
-    
-    <div *ngIf="contaCadastrada==1">
-        <p>Esta conta já está cadastrada</p>
-      </div>
-      <div *ngIf="contaCadastrada==3">
-        <p>Esta conta não está cadastrada</p>
-      </div>
-      
+    <a href="http://localhost:4200/quiz"><button (click)="login()">COMEÇAR TESTE</button></a>
   </div>
   
   <div id="Cadastro" *ngIf="pagina === 'cadastro'">
@@ -40,6 +32,6 @@
     <h5 (click)="valida()">Já possuo conta</h5>
     <br>
   
-    <button (click)="comecarTeste()" (click)="valida()">COMEÇAR TESTE</button>
+    <button (click)="cadastrar()" (click)="valida()">COMEÇAR TESTE</button>
   </div>
   
