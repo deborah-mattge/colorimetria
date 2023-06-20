@@ -5,8 +5,7 @@
     <input type="password" placeholder="Senha" [(ngModel)]="cadastro.senha">
     <br>
     <h5 (click)="valida()">Não possuo conta</h5>
-  
-    <a href="http://localhost:4200/quiz"><button (click)="login()">COMEÇAR TESTE</button></a>
+      <a href="http://localhost:4200/quiz"><button (click)="login()" (click)="cadastrarCategorias()">COMEÇAR TESTE</button></a>
   </div>
   
   <div id="Cadastro" *ngIf="pagina === 'cadastro'">

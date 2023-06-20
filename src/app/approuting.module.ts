@@ -17,6 +17,6 @@ const rotas: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(rotas)],
   exports: [RouterModule],
-  providers: [AuthGuard] // Adicione o AuthGuard aos provedores
+  providers: [AuthGuard] 
 })
 export class AppRoutingModule { }

@@ -10,9 +10,11 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private contaComponent: ContaComponent) {}
 
   canActivate(): boolean {
-    if (this.contaComponent.contaCadastrada === 1) {
+    console.log("socorro")
+    if (this.contaComponent.contaCadastrada == 1) {
       return true;
     } else {
+      console.log("seila")
       this.router.navigate(['/conta']); 
       return false;
     }

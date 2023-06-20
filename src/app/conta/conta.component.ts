@@ -92,7 +92,6 @@ export class ContaComponent implements OnInit {
       } else {
         contaCadastrada = 3;
       }
-      event.preventDefault();
     }
 
     if (contaCadastrada == 1) {
