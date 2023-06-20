@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+#login{
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    width: 30%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
+    text-align: left;
+    border: 5px solid #EFEFEF;
+    padding: 2%;
+    font-family: 'Didact Gothic', sans-serif;
+    margin-bottom: 2%; 
+    background-color: #dbdada;
+    border-radius: 30px;
+    position: relative;
+    text-align: left;
+    margin-top: 3%;
+    
+}
+h1{
+    font-family: 'Chonburi', cursive;
+    font-size: 66px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0px;
+    margin: 20px;
+    margin-right: 45px;
+    background-color: #13192100;
+    text-align: center;
+
+
+
+}
+button{
+    margin: 10px;
+    padding: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    border-color: #131921;
+    background-color: #131921;
+    color: white;
+    cursor: pointer;
+    font-family: 'Cinzel Decorative', cursive;
+    justify-self: center;
+    text-transform:lowercase;
+    
+}
