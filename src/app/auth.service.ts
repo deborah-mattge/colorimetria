@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { ContaComponent } from './conta/conta.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthService {
+  private contaCadastrada: boolean = false;
+  private readonly STORAGE_KEY = 'authState';
 
-  constructor(private router: Router, private contaComponent: ContaComponent) {}
+  constructor() {
+    this.contaCadastrada = this.getAuthStateFromStorage();
+  }
 
-  canActivate(): boolean {
-    console.log("socorro")
-    if (this.contaComponent.contaCadastrada == 1) {
-      return true;
-    } else {
-      console.log("seila")
-      this.router.navigate(['/conta']); 
-      return false;
-    }
+  get isContaCadastrada(): boolean {
+    return this.contaCadastrada;
+  }
+
+  setContaCadastrada(value: boolean): void {
+    this.contaCadastrada = value;
+    this.saveAuthStateToStorage();
+  }
+
+  private getAuthStateFromStorage(): boolean {
+    const storedState = localStorage.getItem(this.STORAGE_KEY);
+    return storedState ? JSON.parse(storedState) : false;
+  }
+
+  private saveAuthStateToStorage(): void {
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.contaCadastrada));
   }
 }
