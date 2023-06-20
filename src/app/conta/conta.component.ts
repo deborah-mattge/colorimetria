@@ -16,11 +16,13 @@ export class ContaComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit() {
     const contasADD = localStorage.getItem("contas");
     if (contasADD) {
       this.contas = JSON.parse(contasADD);
     }
+
   }
 
   mensagemContaCadastrada: string = '';
