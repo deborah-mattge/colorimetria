@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ContaComponent } from './conta/conta.component';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 interface Conta {
   email: string;
@@ -17,7 +18,7 @@ interface Conta {
 })
 export class AppComponent {
   title = 'colorimetria';
-  constructor(private authService: AuthService){}
+  constructor(private router: Router, private authService: AuthService){}
 
   contaCadastrada : number;
   contaLogada: Conta[]=[];
@@ -27,8 +28,8 @@ export class AppComponent {
     this.contaLogada= null;
     localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
     localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
-    console.log("Acontece "+this.contaCadastrada);
     this.authService.setContaCadastrada(false);
+    this.router.navigate(['/login']);
   }
 
 }

@@ -31,12 +31,7 @@ export class ContaComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) { }
 
-  ngOnInit() {
-    const contasADD = localStorage.getItem("contas");
-    if (contasADD) {
-      this.listaContas = JSON.parse(contasADD);
-    }
-  }
+  ngOnInit() {}
 
   mudarPagina(page: string) {
     this.pagina = page;
@@ -109,7 +104,6 @@ export class ContaComponent implements OnInit {
       
     } else {
       this.mensagemContaCadastrada = 'Conta não cadastrada';
-      console.log('Esta conta não está cadastrada');
     }
     this.cadastro.email='';
     this.cadastro.senha='';
