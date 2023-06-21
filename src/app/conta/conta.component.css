@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+body{
+    display: flex;
+    justify-content: center;
+  
+}
+#login{
+    display: flex;
+    justify-content: center;
+    margin: 5%;
+    width: 90%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
+    text-align: left;
+    border: 5px solid #EFEFEF;
+    padding: 2%;
+    font-family: 'Didact Gothic', sans-serif;
+    margin-bottom: 2%; 
+    background-color: #8f8a8a;
+    border-radius: 30px;
+    position: relative;
+    text-align: left;
+    margin-top: 3%;
+    
+}
+h1{
+    font-family: 'Chonburi', cursive;
+    font-size: 58px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0px;
+    margin: 20px;
+    margin-right: 55px;
+    margin-left: 0px;
+    background-color: #13192100;
+    text-align: center;
+
+
+
+}
+#tituloCadastro{
+    font-size: 58px;
+    font-family: 'Chonburi', cursive;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    background-color: #13192100;
+    text-align: center;
+}
+button{
+    margin: 10px;
+    padding: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    border-color: #131921;
+    background-color: #131921;
+    color: white;
+    cursor: pointer;
+    font-family: 'Cinzel Decorative', cursive;
+    justify-self: center;
+    text-transform:lowercase;
+    
+    
+}
+.meio{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: #b1b0b0;
+    width: 90%;
+    height: 75%;
+    border: #8f8a8a;
+    border-radius: 30px;
+    text-align: center;
+    position: relative;
+    
+}
+input{
+    width: 70%;
+    border-radius: 50px;
+    border: #b1b0b0;
+    padding: 20px;
+    margin: 30px;
+    background-color: #EFEFEF;
+    color: #131921;
+}
+#cima{
+    margin-top: 50px;
+}
+#baixo{
+    margin-bottom: 0px;
+}
+
+#comecarTeste{
+    position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 88%;
+  padding: 0px;
+  width: 70%;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+}
+h3{
+    font-family: 'Didact Gothic', sans-serif;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.cadastroInput{
+    background-color:#D9D9D9     ;
+    color: white;
+    margin: 5px;
+    padding: 10px;
+    justify-self: center;
+    width: 100%;
+}
+#Cadastro{
+    display: grid;
+    text-align: center;
+
+    
+    
+}
+h4{
+    margin: 0px;
+    font-family: 'Didact Gothic', sans-serif
+    }
+.meio2{
+    display: grid;
+    place-items: center;
+   align-items: center;
+    place-items: center;
+    background-color:#EFEFEF;
+    
+    border: #d8d3d3;
+    border-radius: 30px;
+    text-align: left;
+    position: relative;
+}
+
+.genero{
+    margin: 0px;
+    width: auto;
+   
+    
+}
+#data{
+    padding: 5px;
+}
+.inputDiferente{
+    background-color:#D9D9D9;
+    padding: 3px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    
+
+}
+
+
+.teste{
+
+    align-items: center;
+    vertical-align: middle;
+
+}

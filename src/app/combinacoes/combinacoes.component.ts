@@ -15,7 +15,9 @@ export class CombinacoesComponent implements OnInit {
  respostasc: any= {};
  respostasPaletas: any= {};
  textoCombinacoes: string = '';
+
  corDeFundo: string [] = [];
+
 
 
  ngOnInit(): void {
@@ -39,6 +41,7 @@ export class CombinacoesComponent implements OnInit {
   const peca = form1.querySelector('input[name="peca"]:checked') as HTMLInputElement;
   if (peca) {
     this.respostasc.respostapeca = peca.value;
+
   }
 
 
@@ -51,6 +54,7 @@ export class CombinacoesComponent implements OnInit {
 
   localStorage.setItem('respostasc', JSON.stringify(this.respostasc));
   this.exibirTextoEspecifico();
+
 
   console.log(this.respostasc);
   console.log(this.respostasPaletas)
@@ -65,7 +69,7 @@ export class CombinacoesComponent implements OnInit {
   trocarPagina(pagina: string) {
     this.paginaAtual = pagina;
   }
- 
+
 
 
   exibirTextoEspecifico(): void {
@@ -112,6 +116,7 @@ export class CombinacoesComponent implements OnInit {
         this.textoCombinacoes = `${cor} ${combinacao}`;
       }
     }
+
   
     const combinacaoCorFundo = {
       'laranja ip': ['#ce2254', '#006360', '#842739'],
@@ -265,6 +270,5 @@ export class CombinacoesComponent implements OnInit {
     this.corDeFundo = combinacaoCorFundo[this.textoCombinacoes] || ['white', 'white', 'white'];
   }
   
- 
- 
+
   }

@@ -1,4 +1,22 @@
-<div *ngIf="paginaAtual === 'quiz'">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
+
+  <title>Document</title>
+</head>
+<body>
+  <div *ngIf="paginaAtual === 'quiz'">
+  <h1>QUIZ COLORAÇÃO PESSOAL</h1>
+  
+  <div id="tudo">
+    <p>Responda as questões a seguir e descubra a sua paleta ideal e as melhores formas de combinar cores e se vestir melhor!</p>
+    <div id="formulario">
     <form id="form1">
       <p>Qual é o seu tom de pele?</p>
       <input type="radio" id="pele1" name="pele" value="fria">
@@ -40,16 +58,17 @@
       <input type="radio" id="veias2" name="veias" value="azul">
       <label for="veias2">Azul</label><br>
     </form>
+
     <button (click)="salvarRespostas()">Mostrar Resultados</button>
   </div>
   
   <div *ngIf="paginaAtual === 'resultados'">
-    <h1>Sua paleta de cores é:</h1>
+    <!-- <h1>Sua paleta de cores é:</h1>
     <h2>{{ textoEspecifico }}</h2>
     <p>Tom de pele: {{ respostas?.respostaPele }}</p>
     <p>Tom de cabelo: {{ respostas?.respostaCabelo }}</p>
     <p>Cor dos olhos: {{ respostas?.respostaOlhos }}</p>
-    <p>Cor das veias: {{ respostas?.respostaVeias }}</p>
+    <p>Cor das veias: {{ respostas?.respostaVeias }}</p> -->
 
     <ng-container *ngIf="textoEspecifico === 'Primavera Quente'" class="imagens">
       <img [src]="'src/assets/primaveraq.jpg'">
