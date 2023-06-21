@@ -59,12 +59,19 @@ img{
     display: flex;
     justify-content: center;
     margin: 0px;    
-    background-color: #13192100;
+    background-color:#131921 ;
     position: absolute;
-    margin-left: 60%;
-    top: 85%;
+    margin-left: 63%;
+    top: 90%;
   transform: translateX(-90%);
+  padding: 20px;
+  width: 40%;
+  border: 30px;
+ 
 
+ }
+ a{
+    background-color:#dbdada;
  }
 button{
     margin: 10px;
@@ -84,7 +91,7 @@ button{
 .quadrado_cinza{
     margin-right: 5%;
     display:block;
-    width: 93%;
+    width: 90%;
     height: 67%;
     border: 5px solid #EFEFEF;
     padding: 10px;
@@ -94,7 +101,7 @@ button{
     border-radius: 30px;
     position: relative;
     text-align:center;
-    margin-top: 0px;
+    margin-top: 50px;
 
 }
 .titulo{

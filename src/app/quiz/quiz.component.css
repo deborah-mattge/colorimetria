@@ -56,7 +56,7 @@ h1{
     letter-spacing: 2px;
     text-transform: uppercase;
     padding: 0px;
-    margin: 25px;
+    margin: 10px;
     background-color: #13192100;
     text-align: center;
 
@@ -93,7 +93,7 @@ button{
     justify-content: center;
 }
 .subtitulo{
-    width: 60%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
+    width: 40%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
     text-align: left;
     border: 5px solid #EFEFEF;
     margin: 2%;
@@ -104,7 +104,7 @@ button{
     border-radius: 30px;
     position: relative;
     text-align: left;
-    font-size: 60px;
+    font-size: 40px;
     font-weight:400;
     text-transform: uppercase;
     color: white;
@@ -112,12 +112,14 @@ button{
 
 }
 img{
-    height: 50%;
-    width: 75%;
+    height: 45%;
+    width: 70%;
 }
 .imagens{
    
 }
+
+
 #ng-container{
     display: flex;
     justify-content: center;
