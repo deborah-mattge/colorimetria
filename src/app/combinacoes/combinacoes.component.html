@@ -94,12 +94,11 @@
           <a href="http://localhost:4200/quiz"><button class="botoes"
             (click)="cadastrarCategorias()">Refazer o Quiz</button></a>
     </div>
-            <div *ngIf="paginaAtual === 'combinacoesResult'">
-              <div [style.background-color]="corDeFundo">
-                  Conteúdo da div
-                </div>
-             
-              </div>
+    <div *ngIf="paginaAtual === 'combinacoesResult'">
+      <div *ngFor="let cor of corDeFundo" [style.background-color]="cor">
+        Conteúdo da div
+      </div>
+    </div>
             <br>
 
 
