@@ -18,7 +18,7 @@ interface Conta {
 export class ContaComponent implements OnInit {
 
   mensagemContaCadastrada: string = '';
-  contaLogada: boolean;
+  contaLogada: Conta[]=[];
   contaCadastrada: number;
   nome: string;
   listaContas: Conta[] = [];
@@ -27,6 +27,7 @@ export class ContaComponent implements OnInit {
   cadastro: any = {};
   contaExistente: boolean = false;
   pagina: string = 'login';
+  respostasPaletas: any= {};
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -84,6 +85,14 @@ export class ContaComponent implements OnInit {
       this.generoMasculino = false;
     } 
   }
+  paleta(){
+     const resultadosSalvos = localStorage.getItem('respostasc');
+   const resultados2Salvos = localStorage.getItem('respostasPaletas');
+   if (resultados2Salvos) {
+     this.respostasPaletas = JSON.parse(resultados2Salvos);
+   }
+console.log(this.respostasPaletas)
+}
   
 
   login() {
@@ -94,18 +103,22 @@ export class ContaComponent implements OnInit {
     for (const conta of this.listaContas) {
       if (conta.email === emailLogin && conta.senha === senhaLogin) {
         contaCadastrada = 1;
+        this.contaLogada=this.listaContas;
+        console.log(this.contaLogada)
+        localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
         console.log('entrou');
         break;
       } else {
         contaCadastrada = 3;
       }
+      localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
+      
     }
-    console.log("teste teste"+ contaCadastrada)
-    localStorage.setItem("Conta Logada", JSON.stringify(this.contaCadastrada));
 
     if (contaCadastrada == 1) {
       this.authService.setContaCadastrada(true);
       this.router.navigate(['/quiz']);
+      
     } else {
       this.mensagemContaCadastrada = 'Conta não cadastrada';
       console.log('Esta conta não está cadastrada');
@@ -113,12 +126,14 @@ export class ContaComponent implements OnInit {
     this.cadastro.email='';
     this.cadastro.senha='';
   }
+  
 
   salvarLocalStorage() {
     localStorage.setItem("contas", JSON.stringify(this.listaContas));
   }
   logout(){
     this.contaCadastrada=3;
+    this.authService.setContaCadastrada(false);
   }
 
 }
