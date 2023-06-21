@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +7,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
 
+
   <title>Document</title>
 </head>
 <body>
   <div *ngIf="paginaAtual === 'quiz'">
   <h1>QUIZ COLORAÇÃO PESSOAL</h1>
-  
+ 
   <div id="tudo">
     <p>Responda as questões a seguir e descubra a sua paleta ideal e as melhores formas de combinar cores e se vestir melhor!</p>
     <div id="formulario">
@@ -26,7 +26,7 @@
       <input type="radio" id="pele3" name="pele" value="neutra">
       <label for="pele3">Neutra</label><br>
     </form>
-  
+ 
     <form id="form2">
       <p>Qual é o seu tom de cabelo?</p>
       <input type="radio" id="cabelo1" name="cabelo" value="preto">
@@ -38,7 +38,7 @@
       <input type="radio" id="cabelo4" name="cabelo" value="loiro">
       <label for="cabelo4">Loiro</label><br>
     </form>
-  
+ 
     <form id="form3">
       <p>Qual é a cor dos olhos?</p>
       <input type="radio" id="olhos1" name="olhos" value="verde">
@@ -50,7 +50,7 @@
       <input type="radio" id="olhos4" name="olhos" value="preto">
       <label for="olhos4">Preto</label><br>
     </form>
-  
+ 
     <form id="form4">
       <p>Qual é a cor das veias?</p>
       <input type="radio" id="veias1" name="veias" value="verde">
@@ -58,67 +58,92 @@
       <input type="radio" id="veias2" name="veias" value="azul">
       <label for="veias2">Azul</label><br>
     </form>
-
-    <button (click)="salvarRespostas()">Mostrar Resultados</button>
   </div>
-  
+  </div>
+
+
+  <div class="botao">
+    <button (click)="salvarRespostas()">mostrar resultados</button>
+  </div>
+ 
+
+
+</div>
+ 
   <div *ngIf="paginaAtual === 'resultados'">
-    <!-- <h1>Sua paleta de cores é:</h1>
-    <h2>{{ textoEspecifico }}</h2>
-    <p>Tom de pele: {{ respostas?.respostaPele }}</p>
+   <div class="subtitulo">Sua paleta de cores é:</div>
+    <h1>{{ textoEspecifico }}</h1>
+   <p>Tom de pele: {{ respostas?.respostaPele }}</p>
     <p>Tom de cabelo: {{ respostas?.respostaCabelo }}</p>
     <p>Cor dos olhos: {{ respostas?.respostaOlhos }}</p>
-    <p>Cor das veias: {{ respostas?.respostaVeias }}</p> -->
-
+    <p>Cor das veias: {{ respostas?.respostaVeias }}</p>  
+<div id="ng-container">
     <ng-container *ngIf="textoEspecifico === 'Primavera Quente'" class="imagens">
       <img [src]="'src/assets/primaveraq.jpg'">
+      <br>
       <img [src]="'src/assets/dourado.jpg'">
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Primavera Intensa'">
       <img [src]="'src/assets/primaverai.jpg'">
+      <br>
       <img [src]="'src/assets/dourado.jpg'">
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Primavera Clara'">
       <img [src]="'src/assets/primaverac.jpg'">
+      <br>
       <img [src]="'src/assets/prata.jpg'">
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Outono Quente'">
       <img [src]="'src/assets/outonoq.jpg'">
+      <br>
       <img [src]="'src/assets/dourado.jpg'">
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Outono Profundo'">
       <img [src]="'src/assets/outonop.jpg'">
+      <br>
       <img [src]="'src/assets/dourado.jpg'">
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Outono Intenso'">
       <img [src]="'src/assets/outonoi.jpg'">
+      <br>
       <img [src]="'src/assets/prata.jpg'">
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Verão Puro'">
       <img [src]="'src/assets/veraop.jpg'">
+      <br>
       <img [src]="'src/assets/prata.jpg'">
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Verão Claro'">
       <img [src]="'src/assets/veraoclaro.jpg'">
+      <br>
       <img [src]="'src/assets/prata.jpg'">
+     
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Verão Quente'">
       <img [src]="'src/assets/veraoq.jpg'">
+      <br>
       <img [src]="'src/assets/prata.jpg'">
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Inverno Profundo'">
-      <img [src]="'src/assets/invernoprof.jpg'">
+      <img [src]="'src/assets/invernoprof.jpg'" style="display: block;">
+      <br>
       <img [src]="'src/assets/prata.jpg'">
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Inverno Suave'">
       <img [src]="'src/assets/invernosuave.jpg'">
+      <br>
       <img [src]="'src/assets/prata.jpg'">
     </ng-container>
     <ng-container *ngIf="textoEspecifico === 'Inverno Puro'">
-      <img [src]="'src/assets/invernopuro.jpg'">
-      <img [src]="'src/assets/prata.jpg'">
+      <img src="src/assets/invernopuro.jpg" style="display: block;">
+      <img src="src/assets/prata.jpg" style="display: block;">
     </ng-container>
 
-    <button (click)="trocarPagina('quiz')">Voltar para o Quiz</button>
+
   </div>
-  
+    <button (click)="trocarPagina('quiz')">voltar para o quiz</button>
+  </div>
+ 
+</body>
+</html>
+
