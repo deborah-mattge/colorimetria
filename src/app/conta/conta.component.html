@@ -11,47 +11,52 @@
 </head>
 <body>
   <div id="Login" *ngIf="pagina === 'login'">
-    <h1> faça login</h1>
-      <input type="email" placeholder="E-mail" [(ngModel)]="cadastro.email">
+      <h1> faça login</h1>
+      <div class="meio">
+      <input type="email" placeholder="E-mail" [(ngModel)]="cadastro.email" id="cima">
       <br>
-      <input type="password" placeholder="Senha" [(ngModel)]="cadastro.senha">
-      <br>
-      <h5 (click)="valida()">Não possuo conta </h5>
+      <input type="password" placeholder="Senha" [(ngModel)]="cadastro.senha" id="baixo">
+ 
+      <h3 (click)="valida()">Não possuo conta </h3>
     
-      <div href="http://localhost:4200/quiz"><button (click)="validarConta()" >COMEÇAR TESTE</button></div >
+      <div id="comecarTeste"href="http://localhost:4200/quiz"><button (click)="validarConta()" >COMEÇAR TESTE</button></div >
+    </div>  
+     
       
       <div *ngIf="contaCadastrada==1">
           <p>Esta conta já está cadastrada</p>
         </div>
         <div *ngIf="contaCadastrada==3">
           <p>Esta conta não está cadastrada</p>
-        </div>
         
+      </div>
     </div>
     
     <div id="Cadastro" *ngIf="pagina === 'cadastro'">
-      <h1>CADASTRE-SE</h1>
-    
+      <h1 id="tituloCadastro">CADASTRE-SE</h1>
+    <div class="meio2">
       <h4>E-mail</h4>
-      <input type="email" placeholder="Ex: maria_silva@dominio.com" [(ngModel)]="cadastro.email">
+      <input type="email" placeholder="Ex: maria_silva@dominio.com" [(ngModel)]="cadastro.email" class="cadastroInput">
     
       <h4>Senha</h4>
-      <input type="password" placeholder="min de 8 caracteres" [(ngModel)]="cadastro.senha">
+      <input type="password" placeholder="min de 8 caracteres" [(ngModel)]="cadastro.senha" class="cadastroInput">
     
       <h4>Nome Completo</h4>
-      <input type="text" placeholder="Ex: Maria da Silva" [(ngModel)]="cadastro.nomeCompleto">
-    
-      <h4>Data Nascimento</h4>
-      <input type="date" name="">
+      <input type="text" placeholder="Ex: Maria da Silva" [(ngModel)]="cadastro.nomeCompleto" class="cadastroInput">
+      <div class="teste">
+
+        <h4>Data Nascimento</h4>
+      <input type="date" name="" class="cadastroInput" id="data">
     
       <h4>Gênero</h4>
-      <input type="checkbox" [(ngModel)]="generoFeminino"> Feminino
-      <input type="checkbox" [(ngModel)]="generoMasculino"> Masculino
-    
-      <br><br>
-      <h5 (click)="valida()">Já possuo conta</h5>
-      <br>
-    
+      <div class="inputDiferente"><input type="checkbox" [(ngModel)]="generoFeminino"  class="genero"> Feminino</div>
+      <div class="inputDiferente"><input type="checkbox" [(ngModel)]="generoMasculino" class="genero"> Masculino</div>
+      
+
+      </div>
+    </div>
+      <h3 (click)="valida()">Já possuo conta</h3>
+
       <button (click)="comecarTeste()" (click)="valida()">COMEÇAR TESTE</button>
     </div>
     
