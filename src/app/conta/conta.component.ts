@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 interface Conta {
   email: string;
   senha: string;
   nomeCompleto: string;
   genero: string;
+  tipoPaleta : string;
 }
 
 @Component({
@@ -14,26 +17,21 @@ interface Conta {
 })
 export class ContaComponent implements OnInit {
 
-  constructor() { }
-
-
-  ngOnInit() {
-    const contasADD = localStorage.getItem("contas");
-    if (contasADD) {
-      this.contas = JSON.parse(contasADD);
-    }
-
-  }
-
   mensagemContaCadastrada: string = '';
+  contaLogada: Conta[]=[];
   contaCadastrada: number;
   nome: string;
-  contas: Conta[] = [];
+  listaContas: Conta[] = [];
   generoFeminino = false;
   generoMasculino = false;
   cadastro: any = {};
-
+  contaExistente: boolean = false;
   pagina: string = 'login';
+  respostasPaletas: any= {};
+
+  constructor(private router: Router, private authService: AuthService) { }
+
+  ngOnInit() {}
 
   mudarPagina(page: string) {
     this.pagina = page;
@@ -47,52 +45,79 @@ export class ContaComponent implements OnInit {
     }
   }
 
-  comecarTeste() {
-    const conta: Conta = {
+  cadastrar() {
+    if (this.cadastro.email.indexOf("@") === -1 || this.cadastro.email.indexOf(".") === -1) {
+      alert('O email informado é inválido.');
+      return;
+    }
+      const conta: Conta = {
       email: this.cadastro.email,
       senha: this.cadastro.senha,
       nomeCompleto: this.cadastro.nomeCompleto,
-      genero: this.generoFeminino ? 'Feminino' : (this.generoMasculino ? 'Masculino' : '')
+      genero: this.generoFeminino ? 'Feminino' : (this.generoMasculino ? 'Masculino' : ''),
+      tipoPaleta : null
     };
-
-    this.contas.push(conta);
-    console.log(this.contas);
-
-    this.salvarLocalStorage();
-
-    this.cadastro = {};
-    this.generoFeminino = false;
-    this.generoMasculino = false;
+  
+    let contaExistente = false;
+  
+    for (const c of this.listaContas) {
+      if (c.email === conta.email) {
+        console.log("Conta já cadastrada");
+        contaExistente = true;
+        break;
+      }
+    }
+  
+    if (contaExistente) {
+      alert("Esta conta já está cadastrada.");
+    } else {
+      this.listaContas.push(conta);
+      console.log(this.listaContas);
+      this.salvarLocalStorage();
+      this.contaCadastrada = 4;
+      this.cadastro = {};
+      this.generoFeminino = false;
+      this.generoMasculino = false;
+    } 
   }
+  
 
-  validarConta() {
+  login() {
     const emailLogin = this.cadastro.email;
     const senhaLogin = this.cadastro.senha;
 
-    console.log(senhaLogin)
-  
-    let contaCadastrada = 0;
-  
-    for (let i = 0; i < this.contas.length; i++) {
-      if (this.contas[i].email === emailLogin && this.contas[i].senha === senhaLogin) {
-        contaCadastrada=1;
+    for (const conta of this.listaContas) {
+      if (conta.email === emailLogin && conta.senha === senhaLogin) {
+        this.contaCadastrada = 1;
+        this.contaLogada=this.listaContas;
+        localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
         break;
       } else {
-        contaCadastrada=3;
+        this.contaCadastrada = 3;
       }
     }
-      if (contaCadastrada==1) {
-        this.mensagemContaCadastrada = 'Conta já cadastrada';
-        console.log('Esta conta já está cadastrada');
-        
-      } else if(contaCadastrada==3) {
-        this.mensagemContaCadastrada = 'Conta não cadastrada';
-        console.log('Esta conta não está cadastrada');
-      }
-    }
-  
-    salvarLocalStorage() {
-      localStorage.setItem("contas", JSON.stringify(this.contas));
-    }
+    localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
 
+    if (this.contaCadastrada == 1) {
+      this.authService.setContaCadastrada(true);
+      this.router.navigate(['/quiz']);
+      
+    } else {
+      this.mensagemContaCadastrada = 'Conta não cadastrada';
+    }
+    this.cadastro.email='';
+    this.cadastro.senha='';
+    console.log(this.valida)
   }
+  
+  
+
+  salvarLocalStorage() {
+    localStorage.setItem("contas", JSON.stringify(this.listaContas));
+  }
+  logout(){
+    this.contaCadastrada=3;
+    this.authService.setContaCadastrada(false);
+  }
+
+}
