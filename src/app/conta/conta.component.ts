@@ -85,37 +85,25 @@ export class ContaComponent implements OnInit {
       this.generoMasculino = false;
     } 
   }
-  paleta(){
-     const resultadosSalvos = localStorage.getItem('respostasc');
-   const resultados2Salvos = localStorage.getItem('respostasPaletas');
-   if (resultados2Salvos) {
-     this.respostasPaletas = JSON.parse(resultados2Salvos);
-   }
-console.log(this.respostasPaletas)
-}
   
 
   login() {
     const emailLogin = this.cadastro.email;
     const senhaLogin = this.cadastro.senha;
-    let contaCadastrada = 0;
 
     for (const conta of this.listaContas) {
       if (conta.email === emailLogin && conta.senha === senhaLogin) {
-        contaCadastrada = 1;
+        this.contaCadastrada = 1;
         this.contaLogada=this.listaContas;
-        console.log(this.contaLogada)
         localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
-        console.log('entrou');
         break;
       } else {
-        contaCadastrada = 3;
+        this.contaCadastrada = 3;
       }
-      localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
-      
     }
+    localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
 
-    if (contaCadastrada == 1) {
+    if (this.contaCadastrada == 1) {
       this.authService.setContaCadastrada(true);
       this.router.navigate(['/quiz']);
       
@@ -125,7 +113,9 @@ console.log(this.respostasPaletas)
     }
     this.cadastro.email='';
     this.cadastro.senha='';
+    console.log(this.valida)
   }
+  
   
 
   salvarLocalStorage() {

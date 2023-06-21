@@ -7,7 +7,7 @@
     <h5 (click)="valida()">Não possuo conta</h5>
       <a href="http://localhost:4200/quiz"><button (click)="login()" (click)="cadastrarCategorias()">COMEÇAR TESTE</button></a>
 
-      <div *ngIf="contaCadastrada===4">
+      <div *ngIf="contaCadastrada===1">
         <p>{{contaLogada.email}}</p>
         <p>TESTE</p>
         <h5 (click)="logout()">Sair</h5>
