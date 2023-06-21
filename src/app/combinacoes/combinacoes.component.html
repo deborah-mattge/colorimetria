@@ -1,1 +1,105 @@
 <p>combinacoes works!</p>
+
+
+<form id="form1">
+    <p>Qual é a peça?</p>
+    <input type="radio" id="peca1" name="peca" value="Blusa">
+    <label for="peca1">Blusa</label><br>
+    <input type="radio" id="peca2" name="peca" value="Calça">
+    <label for="peca2">Calça</label><br>
+    <input type="radio" id="peca3" name="peca" value="Saia">
+    <label for="peca3">Saia</label><br>
+    <input type="radio" id="peca4" name="peca" value="Bermuda">
+    <label for="peca4">Bermuda</label><br>
+    <input type="radio" id="peca5" name="peca" value="Jaqueta">
+    <label for="peca">Jaqueta</label><br>
+  </form>
+
+
+  <form id="form2">
+    <p>Qual é a cor da peça?</p>
+    <input type="radio" id="cor1" name="cor" value="Rosa">
+    <label for="cor1">Rosa</label><br>
+    <input type="radio" id="cor2" name="cor" value="Vermelho">
+    <label for="cor2">Vermelho</label><br>
+    <input type="radio" id="cor3" name="cor" value="Roxo">
+    <label for="cor3">Roxo</label><br>
+    <input type="radio" id="cor4" name="cor" value="Fúcsia">
+    <label for="cor4">Fúcsia</label><br>
+    <input type="radio" id="cor5" name="cor" value="Azul Escuro">
+    <label for="cor5">Azul Escuro</label><br>
+    <input type="radio" id="cor6" name="cor" value="Azul Claro">
+    <label for="cor6">Azul Claro</label><br>
+    <input type="radio" id="cor7" name="cor" value="Marrom">
+    <label for="cor7">Marrom</label><br>
+    <input type="radio" id="cor8" name="cor" value="Verde Claro">
+    <label for="cor8">Verde Claro</label><br>
+    <input type="radio" id="cor9" name="cor" value="Verde Escuro">
+    <label for="cor9">Verde Escuro</label><br>
+    <input type="radio" id="cor10" name="cor" value="Amarelo">
+    <label for="cor10">Amarelo</label><br>
+    <input type="radio" id="cor11" name="cor" value="Laranja">
+    <label for="cor11">Laranja</label><br>
+    <input type="radio" id="cor12" name="cor" value="Branco">
+    <label for="cor12">Branco</label><br>
+    <input type="radio" id="cor13" name="cor" value="Preto">
+    <label for="cor13">Preto</label><br>
+    <input type="radio" id="cor14" name="cor" value="Cinza">
+    <label for="cor14">Cinza</label><br>
+  </form>
+  <button (click)="salvarRespostas()" (click)="trocarPagina('combinacoesResult')"
+  (click)="definirCorDeFundo()">Ver combinações</button>
+<button (click)="trocarPagina('resultados')">Mostrar minha paleta</button>
+
+
+    <div *ngIf="paginaAtual === 'resultados'">
+        <h1>Sua paleta de cores é:</h1>
+       
+        <ng-container *ngIf="respostasPaletas === 'Primavera Quente'">
+            <img [src]="'src/assets/primaveraq.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Primavera Intensa'">
+            <img [src]="'src/assets/primaverai.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Primavera Clara'">
+            <img [src]="'src/assets/primaverac.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Outono Quente'">
+            <img [src]="'src/assets/outonoq.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Outono Profundo'">
+            <img [src]="'src/assets/outonop.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Outono Intenso'">
+            <img [src]="'src/assets/outonoi.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Verão Puro'">
+            <img [src]="'src/assets/veraop.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Verão Claro'">
+            <img [src]="'src/assets/veraoclaro.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Verão Quente'">
+            <img [src]="'src/assets/veraos.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Inverno Profundo'">
+            <img [src]="'src/assets/invernoprof.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Inverno Suave'">
+            <img [src]="'src/assets/invernosuave.jpg'">
+          </ng-container>
+          <ng-container *ngIf="respostasPaletas === 'Inverno Puro'">
+            <img [src]="'src/assets/invernopuro.jpg'">
+          </ng-container>
+          <a href="http://localhost:4200/quiz"><button class="botoes"
+            (click)="cadastrarCategorias()">Refazer o Quiz</button></a>
+    </div>
+    <div *ngIf="paginaAtual === 'combinacoesResult'">
+      <div style="width:100px; height:50px; display:inline-block; border: 2px solid ; border-color: black;"*ngFor="let cor of corDeFundo" [style.background-color]="cor">
+        {{respostaPaletas}}
+      </div>
+    </div>
+            <br>
+
+
+

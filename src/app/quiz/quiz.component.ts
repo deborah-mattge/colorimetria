@@ -11,7 +11,7 @@ export class QuizComponent implements OnInit {
   respostas: any = {}; // Objeto para armazenar as respostas
   textoEspecifico: string = '';
   imagemEspecifica: string;
-
+  respostasPaletas: any = {};
 
   trocarPagina(pagina: string) {
     this.paginaAtual = pagina;
@@ -43,13 +43,19 @@ export class QuizComponent implements OnInit {
     if (veias) {
       this.respostas.respostaVeias = veias.value;
     }
-    this.exibirTextoEspecifico();
-    this.trocarPagina('resultados');
 
-    console.log(this.respostas); // Exibe as respostas no console
   }
 
   ngOnInit(): void {
+    const respostasString = localStorage.getItem('respostas');
+    if (respostasString) {
+      this.respostas = JSON.parse(respostasString);
+    
+    }
+    const respostas2String = localStorage.getItem('respostasPaletas');
+    if (respostas2String) {
+      this.respostasPaletas = JSON.parse(respostas2String);
+    }
   }
 
   exibirTextoEspecifico(): void {
@@ -89,6 +95,10 @@ export class QuizComponent implements OnInit {
       //primavera clara
     } else if (respostaPele === 'neutra' && respostaCabelo === 'ruivo' && respostaOlhos === 'azul' && respostaVeias === 'verde') {
       this.textoEspecifico = 'Primavera Clara';
+
+    } else if (respostaPele === 'neutra' && respostaCabelo === 'ruivo' && respostaOlhos === 'castanho' && respostaVeias === 'azul') {
+      this.textoEspecifico = 'Primavera Clara';
+
     } else if (respostaPele === 'neutra' && respostaCabelo === 'castanho' && respostaOlhos === 'verde' && respostaVeias === 'azul') {
       this.textoEspecifico = 'Primavera Clara';
       
@@ -143,6 +153,10 @@ export class QuizComponent implements OnInit {
     this.textoEspecifico = 'Outono Intenso';
   } else if (respostaPele === 'quente' && respostaCabelo === 'ruivo' && respostaOlhos === 'castanho' && respostaVeias === 'azul') {
     this.textoEspecifico = 'Outono Intenso';
+
+  }else if (respostaPele === 'quente' && respostaCabelo === 'preto' && respostaOlhos === 'azul' && respostaVeias === 'verde') {
+    this.textoEspecifico = 'Outono Intenso';
+
     //verão puro
   }else if (respostaPele === 'fria' && respostaCabelo === 'loiro' && respostaOlhos === 'verde' && respostaVeias === 'verde') {
     this.textoEspecifico = 'Verão Puro';
@@ -257,6 +271,9 @@ export class QuizComponent implements OnInit {
     this.textoEspecifico = 'Inverno Puro';
 }
 
+localStorage.setItem('respostasPaletas', JSON.stringify(this.textoEspecifico));
   }
+  
+
 }
 
