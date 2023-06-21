@@ -89,6 +89,7 @@ export class ContaComponent implements OnInit {
     for (const conta of this.listaContas) {
       if (conta.email === emailLogin && conta.senha === senhaLogin) {
         this.contaCadastrada = 1;
+        this.authService.setContaCadastrada(true);
         this.contaLogada=this.listaContas;
         localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
         break;
@@ -121,3 +122,4 @@ export class ContaComponent implements OnInit {
   }
 
 }
+

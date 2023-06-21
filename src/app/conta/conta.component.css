@@ -56,7 +56,7 @@ h1{
 button{
     margin: 10px;
     padding: 10px;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     border-radius: 10px;
@@ -106,6 +106,7 @@ input{
   top: 88%;
   padding: 0px;
   width: 70%;
+  font-size: 15px;
   margin: 0px;
   display: flex;
   justify-content: center;
@@ -172,4 +173,7 @@ h4{
     align-items: center;
     vertical-align: middle;
 
+}
+a{
+    background-color: #13192100;
 }
