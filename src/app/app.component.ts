@@ -24,12 +24,12 @@ export class AppComponent {
   contaLogada: Conta[]=[];
 
   logout(){
+    this.router.navigate(['/login']);
     this.contaCadastrada=3;
     this.contaLogada= null;
     localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
     localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
     this.authService.setContaCadastrada(false);
-    this.router.navigate(['/login']);
   }
 
 }
