@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
+
 interface Conta {
   email: string;
   senha: string;
@@ -10,12 +11,14 @@ interface Conta {
   tipoPaleta : string;
 }
 
+
 @Component({
   selector: 'app-conta',
   templateUrl: './conta.component.html',
   styleUrls: ['./conta.component.css']
 })
 export class ContaComponent implements OnInit {
+
 
   mensagemContaCadastrada: string = '';
   contaLogada: Conta[]=[];
@@ -29,14 +32,16 @@ export class ContaComponent implements OnInit {
   pagina: string = 'login';
   respostasPaletas: any= {};
 
+
   constructor(private router: Router, private authService: AuthService) { }
 
-  ngOnInit() {}
 
-  mudarPagina(page: string) {
-    this.pagina = page;
+  ngOnInit() {
+    const contas = localStorage.getItem('contas');
+  if (contas) {
+    this.listaContas = JSON.parse(contas);
   }
-
+}
   valida() {
     if (this.pagina == 'login') {
       this.pagina = 'cadastro';
@@ -44,6 +49,7 @@ export class ContaComponent implements OnInit {
       this.pagina = 'login';
     }
   }
+
 
   cadastrar() {
     if (this.cadastro.email.indexOf("@") === -1 || this.cadastro.email.indexOf(".") === -1) {
@@ -57,9 +63,9 @@ export class ContaComponent implements OnInit {
       genero: this.generoFeminino ? 'Feminino' : (this.generoMasculino ? 'Masculino' : ''),
       tipoPaleta : null
     };
-  
+ 
     let contaExistente = false;
-  
+ 
     for (const c of this.listaContas) {
       if (c.email === conta.email) {
         console.log("Conta já cadastrada");
@@ -67,7 +73,7 @@ export class ContaComponent implements OnInit {
         break;
       }
     }
-  
+ 
     if (contaExistente) {
       alert("Esta conta já está cadastrada.");
     } else {
@@ -78,13 +84,15 @@ export class ContaComponent implements OnInit {
       this.cadastro = {};
       this.generoFeminino = false;
       this.generoMasculino = false;
-    } 
+    }
   }
-  
+ 
+
 
   login() {
     const emailLogin = this.cadastro.email;
     const senhaLogin = this.cadastro.senha;
+
 
     for (const conta of this.listaContas) {
       if (conta.email === emailLogin && conta.senha === senhaLogin) {
@@ -99,10 +107,11 @@ export class ContaComponent implements OnInit {
     }
     localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
 
+
     if (this.contaCadastrada == 1) {
       this.authService.setContaCadastrada(true);
       this.router.navigate(['/quiz']);
-      
+     
     } else {
       this.mensagemContaCadastrada = 'Conta não cadastrada';
     }
@@ -110,8 +119,9 @@ export class ContaComponent implements OnInit {
     this.cadastro.senha='';
     console.log(this.valida)
   }
-  
-  
+ 
+ 
+
 
   salvarLocalStorage() {
     localStorage.setItem("contas", JSON.stringify(this.listaContas));
@@ -121,5 +131,5 @@ export class ContaComponent implements OnInit {
     this.authService.setContaCadastrada(false);
   }
 
-}
 
+}

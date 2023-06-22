@@ -6,12 +6,16 @@ body{
     
 }
 #tudo{
-
+    
     margin-top: 0px;
     
     margin-left: 70px;
    
     
+}
+.resultados{
+    display: flex;
+    justify-content: center;
 }
 form{
     margin: 5%;
@@ -114,6 +118,7 @@ button{
 img{
     height: 45%;
     width: 70%;
+    justify-content: center;
 }
 .imagens{
    
@@ -123,4 +128,9 @@ img{
 #ng-container{
     display: flex;
     justify-content: center;
+}
+.joias{
+    height: 15%;
+    width: 35%;
+    margin: 70px;
 }
