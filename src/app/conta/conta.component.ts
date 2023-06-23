@@ -37,11 +37,6 @@ export class ContaComponent implements OnInit {
   if (contas) {
     this.listaContas = JSON.parse(contas);
   }
-
-  const listaContas = JSON.parse(localStorage.getItem('Lista de Contas'));
-  if (listaContas && Array.isArray(listaContas)) {
-    this.listaContas = listaContas;
-  }
 }
   valida() {
     if (this.pagina == 'login') {
@@ -61,7 +56,7 @@ export class ContaComponent implements OnInit {
       senha: this.cadastro.senha,
       nomeCompleto: this.cadastro.nomeCompleto,
       genero: this.generoFeminino ? 'Feminino' : (this.generoMasculino ? 'Masculino' : ''),
-      tipoPaleta : this.resultadoQuiz = this.authService.getResultadoQuiz()
+      tipoPaleta : null
     };
  
     let contaExistente = false;
@@ -92,16 +87,19 @@ export class ContaComponent implements OnInit {
     contaLogada.tipoPaleta = this.authService.getResultadoQuiz(); 
     localStorage.setItem('Conta logada', JSON.stringify(contaLogada)); 
 
-  // Atualizar a paleta na lista de contas
-  for (let i = 0; i < this.listaContas.length; i++) {
-    if (this.listaContas[i].email === contaLogada.email) {
-      this.listaContas[i].tipoPaleta = this.authService.getResultadoQuiz();
-      break; // Se a conta foi encontrada, interrompa o loop
+    const listaContas = JSON.parse(localStorage.getItem('contas'));
+    if (listaContas && Array.isArray(listaContas)) {
+      this.listaContas = listaContas;
+  
+      for (let i = 0; i < this.listaContas.length; i++) {
+        if (this.listaContas[i].email === contaLogada.email) {
+          this.listaContas[i].tipoPaleta = contaLogada.tipoPaleta;
+          break;
+        }
+      }
+  
+      localStorage.setItem('contas', JSON.stringify(this.listaContas));
     }
-  }
-
-  // Salvar a lista de contas atualizada no localStorage
-  localStorage.setItem('Lista de Contas', JSON.stringify(this.listaContas));
 }
 
   login() {
