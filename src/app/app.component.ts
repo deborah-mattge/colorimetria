@@ -30,6 +30,7 @@ export class AppComponent {
     localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
     localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
     this.authService.setContaCadastrada(false);
+    this.contaLogada.splice[0]
   }
 
 }

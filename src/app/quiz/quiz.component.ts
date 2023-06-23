@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { ContaComponent } from '../conta/conta.component';
 
 @Component({
   selector: 'app-quiz',
@@ -12,6 +14,10 @@ export class QuizComponent implements OnInit {
   textoEspecifico: string = '';
   imagemEspecifica: string;
   respostasPaletas: any = {};
+  private resultadoQuiz: string | null = null;
+
+  constructor(private authService: AuthService, private contaComponent: ContaComponent) {}
+
 
 
   trocarPagina(pagina: string) {
@@ -269,5 +275,12 @@ export class QuizComponent implements OnInit {
 }
 localStorage.setItem('respostasPaletas', JSON.stringify(this.textoEspecifico));
 
+this.authService.setResultadoQuiz(this.textoEspecifico);
+
+// // Atualizar a propriedade tipoPaleta do objeto contaLogada
+// const contaLogada = JSON.parse(localStorage.getItem('Conta logada')); // Obter o objeto contaLogada do localStorage
+// contaLogada.tipoPaleta = this.authService.getResultadoQuiz(); // Atualizar a propriedade tipoPaleta com a resposta do quiz
+// localStorage.setItem('Conta logada', JSON.stringify(contaLogada)); // Salvar o objeto atualizado no localStorage
+this.contaComponent.atualizarContaLogada();
   }
 }
