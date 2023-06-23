@@ -11,6 +11,7 @@ export class QuizComponent implements OnInit {
   respostas: any = {}; // Objeto para armazenar as respostas
   textoEspecifico: string = '';
   imagemEspecifica: string;
+  respostasPaletas: any = {};
 
 
   trocarPagina(pagina: string) {
@@ -43,6 +44,7 @@ export class QuizComponent implements OnInit {
     if (veias) {
       this.respostas.respostaVeias = veias.value;
     }
+    localStorage.setItem('respostas', JSON.stringify(this.respostas));
     this.exibirTextoEspecifico();
     this.trocarPagina('resultados');
 
@@ -50,6 +52,15 @@ export class QuizComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const respostasString = localStorage.getItem('respostas');
+    if (respostasString) {
+      this.respostas = JSON.parse(respostasString);
+    
+    }
+    const respostas2String = localStorage.getItem('respostasPaletas');
+    if (respostas2String) {
+      this.respostasPaletas = JSON.parse(respostas2String);
+    }
   }
 
   exibirTextoEspecifico(): void {
@@ -256,6 +267,7 @@ export class QuizComponent implements OnInit {
   } else if (respostaPele === 'neutra' && respostaCabelo === 'preto' && respostaOlhos === 'pretos' && respostaVeias === 'azul') {
     this.textoEspecifico = 'Inverno Puro';
 }
+localStorage.setItem('respostasPaletas', JSON.stringify(this.textoEspecifico));
 
   }
 }
