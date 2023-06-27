@@ -17,7 +17,7 @@
       <input type="password" placeholder="Senha" [(ngModel)]="cadastro.senha" id="baixo">
       <br>
       <h5 (click)="valida()">Não possuo conta</h5>
-      <div id="comecarTeste"><a href="http://localhost:4200/quiz"><button (click)="login()" (click)="cadastrarCategorias()">COMEÇAR TESTE</button></a></div>
+      <div id="comecarTeste"><a href="http://localhost:4200/quiz"><button (click)="login()" (click)="paginaLogada()" (click)="cadastrarCategorias()">COMEÇAR TESTE</button></a></div>
     </div>
   </div>
 
@@ -47,6 +47,10 @@
   <br>
   
   <button (click)="cadastrar()" (click)="valida()">COMEÇAR TESTE</button>
+  </div>
+
+  <div *ngIf="pagina === 'contaLogada'">
+    <h3>Você está logado!</h3>
   </div>
 </body>
 </html>

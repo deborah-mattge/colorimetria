@@ -18,10 +18,16 @@ interface Conta {
 })
 export class AppComponent {
   title = 'colorimetria';
-  constructor(private router: Router, private authService: AuthService){}
+  constructor(private router: Router, private authService: AuthService, private contaComponent: ContaComponent){}
 
   contaCadastrada : number;
   contaLogada: Conta[]=[];
+
+  permissao(){
+    if(this.contaCadastrada===3){
+      alert("É necessário fazer o login para ter acesso a está página!")
+    }
+  }
 
   logout(){
     this.router.navigate(['/login']);

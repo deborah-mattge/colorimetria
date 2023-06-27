@@ -18,17 +18,14 @@ interface Conta {
 })
 export class ContaComponent implements OnInit {
 
-  mensagemContaCadastrada: string = '';
   contaLogada: Conta;
   contaCadastrada: number;
-  nome: string;
   listaContas: Conta[] = [];
   generoFeminino = false;
   generoMasculino = false;
   cadastro: any = {};
   contaExistente: boolean = false;
   pagina: string = 'login';
-  resultadoQuiz: string | null = null;
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -43,12 +40,21 @@ export class ContaComponent implements OnInit {
       this.pagina = 'cadastro';
     } else if (this.pagina == 'cadastro') {
       this.pagina = 'login';
+    } 
+  }
+
+  paginaLogada(){
+    if(this.contaCadastrada==1){
+      this.pagina = 'contaLogada';
     }
   }
 
   cadastrar() {
     if (this.cadastro.email.indexOf("@") === -1 || this.cadastro.email.indexOf(".") === -1) {
-      alert('O email informado é inválido.');
+      alert('O email informado é inválido!');
+      this.cadastro = {};
+      this.generoFeminino = false;
+      this.generoMasculino = false;
       return;
     }
       const conta: Conta = {
@@ -63,17 +69,14 @@ export class ContaComponent implements OnInit {
  
     for (const c of this.listaContas) {
       if (c.email === conta.email) {
-        console.log("Conta já cadastrada");
         contaExistente = true;
         break;
       }
     }
- 
     if (contaExistente) {
-      alert("Esta conta já está cadastrada.");
+      alert("Esta conta já está cadastrada!");
     } else {
       this.listaContas.push(conta);
-      console.log(this.listaContas);
       this.salvarLocalStorage();
       this.contaCadastrada = 4;
       this.cadastro = {};
@@ -113,6 +116,7 @@ export class ContaComponent implements OnInit {
         localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
         break;
       } else {
+        alert("Email ou senha inválidos!")
         this.contaCadastrada = 3;
       }
     }
@@ -120,28 +124,16 @@ export class ContaComponent implements OnInit {
 
     if (this.contaCadastrada == 1) {
       this.authService.setContaCadastrada(true);
-      this.router.navigate(['/quiz']);
-     
     } else {
-      this.mensagemContaCadastrada = 'Conta não cadastrada';
+      alert('Conta não cadastrada!');
     }
     this.cadastro.email='';
     this.cadastro.senha='';
-    console.log(this.valida)
   }
-
 
   salvarLocalStorage() {
     localStorage.setItem("contas", JSON.stringify(this.listaContas));
   }
-  logout(){
-    this.contaCadastrada=3;
-    this.authService.setContaCadastrada(false);
-  }
-
-
-
-
 }
 
 
