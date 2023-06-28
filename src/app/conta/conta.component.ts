@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { QuizComponent } from '../quiz/quiz.component';
+
 
 
 interface Conta {
@@ -29,6 +31,9 @@ export class ContaComponent implements OnInit {
   contaExistente: boolean = false;
   pagina: string = 'login';
   resultadoQuiz: string | null = null;
+  paginaAtual: string = 'quiz';
+
+
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -45,6 +50,10 @@ export class ContaComponent implements OnInit {
       this.pagina = 'login';
     }
   }
+
+  trocarPagina(pagina: string) {
+ this.paginaAtual = pagina;
+}
 
   cadastrar() {
     if (this.cadastro.email.indexOf("@") === -1 || this.cadastro.email.indexOf(".") === -1) {
@@ -102,33 +111,45 @@ export class ContaComponent implements OnInit {
     }
 }
 
-  login() {
-    const emailLogin = this.cadastro.email;
-    const senhaLogin = this.cadastro.senha;
-    for (const conta of this.listaContas) {
-      if (conta.email === emailLogin && conta.senha === senhaLogin) {
-        this.contaCadastrada = 1;
-        this.authService.setContaCadastrada(true);
-        this.contaLogada = conta; 
-        localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
-        break;
-      } else {
-        this.contaCadastrada = 3;
-      }
-    }
-    localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
+login() {
+  const emailLogin = this.cadastro.email;
+  const senhaLogin = this.cadastro.senha;
+  let contaEncontrada = false;
 
-    if (this.contaCadastrada == 1) {
+  for (const conta of this.listaContas) {
+    if (conta.email === emailLogin && conta.senha === senhaLogin) {
+      this.contaCadastrada = 1;
+      this.authService.setContaCadastrada(true);
+      this.contaLogada = conta;
+      localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
+      contaEncontrada = true;
+      break;
+    } else {
+      this.contaCadastrada = 3;
+    }
+  }
+
+  localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
+
+  if (this.contaCadastrada === 1 && contaEncontrada) {
+    if (this.contaLogada.tipoPaleta === null) {
       this.authService.setContaCadastrada(true);
       this.router.navigate(['/quiz']);
-     
-    } else {
+    } else if(this.contaLogada.tipoPaleta != null){
+      this.authService.setContaCadastrada(true);
+      this.trocarPagina('resultados');
+    }
+    
+    else {
       this.mensagemContaCadastrada = 'Conta não cadastrada';
     }
-    this.cadastro.email='';
-    this.cadastro.senha='';
-    console.log(this.valida)
   }
+
+  this.cadastro.email = '';
+  this.cadastro.senha = '';
+  console.log(this.valida);
+}
+
 
 
   salvarLocalStorage() {
@@ -138,6 +159,7 @@ export class ContaComponent implements OnInit {
     this.contaCadastrada=3;
     this.authService.setContaCadastrada(false);
   }
+
 
 
 

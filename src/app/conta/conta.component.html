@@ -17,9 +17,74 @@
       <input type="password" placeholder="Senha" [(ngModel)]="cadastro.senha" id="baixo">
       <br>
       <h5 (click)="valida()">Não possuo conta</h5>
-      <div id="comecarTeste"><a href="http://localhost:4200/quiz"><button (click)="login()" (click)="cadastrarCategorias()">COMEÇAR TESTE</button></a></div>
+      <div id="comecarTeste"><button 
+        (click)="login()" (click)="cadastrarCategorias()">COMEÇAR TESTE</button></div>
     </div>
   </div>
+
+   <div *ngIf="paginaAtual==='resultados'">
+    {{contaLogada.tipoPaleta}}
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Primavera Quente'" class="imagens">
+      <img [src]="'src/assets/primaveraq.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/dourado.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Primavera Intensa'">
+      <img [src]="'src/assets/primaverai.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/dourado.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Primavera Clara'">
+      <img [src]="'src/assets/primaverac.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/prata.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Outono Quente'">
+      <img [src]="'src/assets/outonoq.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/dourado.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Outono Profundo'">
+      <img [src]="'src/assets/outonop.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/dourado.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Outono Intenso'">
+      <img [src]="'src/assets/outonoi.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/prata.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Verão Puro'">
+      <img [src]="'src/assets/veraop.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/prata.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Verão Claro'">
+      <img [src]="'src/assets/veraoclaro.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/prata.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Verão Quente'">
+      <img [src]="'src/assets/veraoq.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/prata.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Inverno Profundo'">
+      <img [src]="'src/assets/invernoprof.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/prata.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Inverno Suave'">
+      <img [src]="'src/assets/invernosuave.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/prata.jpg'" class="joias">
+    </ng-container>
+    <ng-container *ngIf="contaLogada.tipoPaleta === 'Inverno Puro'">
+      <img [src]="'src/assets/invernopuro.jpg'">
+      <div class="subtitulo">Sua cor para acessórios é:</div> 
+      <img [src]="'src/assets/prata.jpg'" class="joias">
+    </ng-container>
+  </div> 
 
   <div id="Cadastro" *ngIf="pagina === 'cadastro'">
     <h1>CADASTRE-SE</h1>

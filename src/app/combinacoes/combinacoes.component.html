@@ -95,7 +95,7 @@
             (click)="cadastrarCategorias()">Refazer o Quiz</button></a>
     </div>
     <div *ngIf="paginaAtual === 'combinacoesResult'">
-      <div style="width:100px; height:50px; display:inline-block; border: 2px solid ; border-color: black;"*ngFor="let cor of corDeFundo" [style.background-color]="cor">
+      <div style="justify-content: center;width:100px; align-items: center; height:50px; display:inline-block; border: 2px solid ; border-color: black;"*ngFor="let cor of corDeFundo" [style.background-color]="cor">
         {{respostaPaletas}}
       </div>
     </div>

@@ -11,7 +11,7 @@ const rotas: Routes = [
   { path: 'conta', component: ContaComponent },
   { path: 'quiz', component: QuizComponent, canActivate: [AuthGuard] },
   { path: 'combinacoes', component: CombinacoesComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: 'telainicial', pathMatch: 'full' }
+  { path: '', redirectTo: 'telainicial', pathMatch: 'full' },
 ];
 
 @NgModule({

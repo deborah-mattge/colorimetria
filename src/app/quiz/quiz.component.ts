@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { ContaComponent } from '../conta/conta.component';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -14,14 +15,18 @@ export class QuizComponent implements OnInit {
   textoEspecifico: string = '';
   imagemEspecifica: string;
   respostasPaletas: any = {};
-  private resultadoQuiz: string | null = null;
-
-  constructor(private authService: AuthService, private contaComponent: ContaComponent) {}
+  
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private contaComponent: ContaComponent
+  ) {}
 
 
 
   trocarPagina(pagina: string) {
     this.paginaAtual = pagina;
+    localStorage.setItem('paginalist', JSON.stringify(this.paginaAtual))
   }
 
   salvarRespostas(): void {
@@ -66,6 +71,10 @@ export class QuizComponent implements OnInit {
     const respostas2String = localStorage.getItem('respostasPaletas');
     if (respostas2String) {
       this.respostasPaletas = JSON.parse(respostas2String);
+    }
+    const pagina = localStorage.getItem('paginaAtual');
+    if (pagina) {
+      this.paginaAtual = JSON.parse(pagina);
     }
   }
 
