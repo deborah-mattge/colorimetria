@@ -24,7 +24,8 @@ header{
 }
 nav{
     padding: 10px;
-   
+    display: flex;
+    justify-content: space-between;
     background-color: #1D2530;
     justify-content: space-between  ;
     
@@ -42,10 +43,13 @@ nav{
     background-color: #1D2530;
     color: #ffffff;
     cursor: pointer;
-    
+  
     
 }
 a{
     background-color: #1D2530;
     margin-right: 5px
+}
+#logout{
+    margin-left: auto;
 }

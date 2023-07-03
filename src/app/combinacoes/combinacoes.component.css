@@ -51,7 +51,8 @@ label{
 }
 button{
     margin-left: 2%;
-    margin-right    : 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
     padding: 10px;
     font-size: 20px;
     font-weight: bold;
@@ -70,8 +71,8 @@ button{
     
     display: inline-block;
     padding: 2%;
-    width: 35%;
-    vertical-align: top;
+    width: 40%;
+   vertical-align: top; 
     
     
     
@@ -79,7 +80,7 @@ button{
 #form1{
     width: 25%;
     display: inline-block;
-    margin-left: 10%;
+    margin-left: 7%;
     
    
 }
@@ -101,4 +102,61 @@ button{
 
   margin: 0px;
    
+}
+.subtitulo{
+    width: 45%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
+    text-align: left;
+    border: 5px solid #EFEFEF;
+    margin: 2%;
+    padding-left: 3%;
+    margin-left: 0PX;
+    font-family: 'Didact Gothic', sans-serif;
+    background-color: #8d8d8db6;
+    border-radius: 30px;
+    position: relative;
+    text-align: left;
+    font-size: 40px;
+    font-weight:400;
+    text-transform: uppercase;
+    color: white;
+
+}
+.resposta{
+       font-family: 'Cinzel Decorative', cursive;
+       font-size: 55px;
+       font-weight: 100;
+       letter-spacing: 2px;
+       text-transform: uppercase;
+       padding: 0px;
+       margin: 10px;
+       background-color: #13192100;
+       text-align: center;
+}
+img{
+    height: 45%;
+    width: 70%;
+    justify-content: center;
+}
+a{
+    background-color: #13192100;
+
+}
+#resultados{
+    display: flex;
+    justify-content: center;
+
+}
+.combinacoes{
+    width:13%; 
+    height:100px; 
+    display:inline-block; 
+    border: 2px solid ; 
+    border-color: #dbdada;
+    margin: 15px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+#combinacoesResult{
+    display: flex;
+    justify-content: center;
 }

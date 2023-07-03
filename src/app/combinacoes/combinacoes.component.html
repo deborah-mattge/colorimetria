@@ -71,9 +71,10 @@
 </div>
   </div>
   
-      <div *ngIf="paginaAtual === 'resultados'">
-          <h1>Sua paleta de cores é:</h1>
-        {{respostasPaletas}}
+      <div *ngIf="paginaAtual === 'resultados'" >
+          <h1 class="subtitulo">sua paleta de cores é:</h1>
+        <h1 class="respostas">{{respostasPaletas}}</h1>
+        <div id="resultados">
           <ng-container *ngIf="respostasPaletas === 'Primavera Quente'">
               <img [src]="'src/assets/primaveraq.jpg'">
             </ng-container>
@@ -110,13 +111,18 @@
             <ng-container *ngIf="respostasPaletas === 'Inverno Puro'">
               <img [src]="'src/assets/invernopuro.jpg'">
             </ng-container>
+          </div>
             <a href="http://localhost:4200/quiz"><button class="botoes"
               (click)="cadastrarCategorias()">Refazer o Quiz</button></a>
+           
       </div>
       <div *ngIf="paginaAtual === 'combinacoesResult'">
-        <div style="width:100px; height:50px; display:inline-block; border: 2px solid ; border-color: black;"*ngFor="let cor of corDeFundo" [style.background-color]="cor">
+        <h1 class="subtitulo">sua combinação é:</h1>
+        <div  id="combinacoesResult">
+        <div *ngFor="let cor of corDeFundo" [style.background-color]="cor" class="combinacoes">
           {{respostaPaletas}}
         </div>
+      </div>
       </div>
              
 </body>
