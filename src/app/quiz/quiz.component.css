@@ -119,10 +119,9 @@ img{
     height: 45%;
     width: 70%;
     justify-content: center;
+    margin: 0px;
 }
-.imagens{
-   
-}
+
 
 
 #ng-container{
@@ -132,5 +131,11 @@ img{
 .joias{
     height: 15%;
     width: 35%;
-    margin: 70px;
+    margin: 0px;
+    margin-bottom:10px ;
+}
+.imagensRespostas{
+
+    display: flex;
+    justify-content: center;
 }

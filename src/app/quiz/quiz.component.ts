@@ -124,6 +124,8 @@ export class QuizComponent implements OnInit {
     this.textoEspecifico = 'Outono Quente';
   } else if (respostaPele === 'neutra' && respostaCabelo === 'ruivo' && respostaOlhos === 'azul' && respostaVeias === 'azul') {
     this.textoEspecifico = 'Outono Quente';
+  } else if (respostaPele === 'neutra' && respostaCabelo === 'castanho' && respostaOlhos === 'castanho' && respostaVeias === 'verde') {
+    this.textoEspecifico = 'Outono Quente';
     //outono profundo
   } else if (respostaPele === 'quente' && respostaCabelo === 'preto' && respostaOlhos === 'preto' && respostaVeias === 'verde') {
     this.textoEspecifico = 'Outono Profundo';
