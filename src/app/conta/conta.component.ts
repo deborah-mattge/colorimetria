@@ -102,7 +102,7 @@ export class ContaComponent implements OnInit {
         }
       }
   
-      localStorage.setItem('contas', JSON.stringify(this.listaContas));
+      this.salvarLocalStorage(); 
     }
 }
 
@@ -112,13 +112,11 @@ export class ContaComponent implements OnInit {
     for (const conta of this.listaContas) {
       if (conta.email === emailLogin && conta.senha === senhaLogin) {
         this.contaCadastrada = 1;
-        this.authService.setContaCadastrada(true);
         this.contaLogada = conta; 
         localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
         break;
       } else {
         this.contaCadastrada = 3;
-        this.authService.setContaCadastrada(false);
       }
     }
     localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
