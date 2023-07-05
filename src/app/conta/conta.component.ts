@@ -83,6 +83,7 @@ export class ContaComponent implements OnInit {
       this.generoFeminino = false;
       this.generoMasculino = false;
     }
+    this.authService.setContaCadastrada(false);
   }
 
   atualizarContaLogada() {
@@ -116,8 +117,8 @@ export class ContaComponent implements OnInit {
         localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
         break;
       } else {
-        alert("Email ou senha inválidos!")
         this.contaCadastrada = 3;
+        this.authService.setContaCadastrada(false);
       }
     }
     localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
@@ -125,9 +126,8 @@ export class ContaComponent implements OnInit {
     if (this.contaCadastrada == 1) {
       this.authService.setContaCadastrada(true);
     } else {
+      alert("Email ou senha inválidos!")
       this.authService.setContaCadastrada(false);
-      
-
     }
     this.cadastro.email='';
     this.cadastro.senha='';
