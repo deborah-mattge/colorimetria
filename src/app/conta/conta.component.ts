@@ -125,8 +125,9 @@ export class ContaComponent implements OnInit {
     if (this.contaCadastrada == 1) {
       this.authService.setContaCadastrada(true);
     } else {
-      alert('Conta não cadastrada!');
       this.authService.setContaCadastrada(false);
+      
+
     }
     this.cadastro.email='';
     this.cadastro.senha='';
