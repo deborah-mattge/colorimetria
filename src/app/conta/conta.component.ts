@@ -56,6 +56,12 @@ export class ContaComponent implements OnInit {
       this.generoFeminino = false;
       this.generoMasculino = false;
       return;
+    } else if(this.cadastro.senha.length<8){
+      alert('A senha deve conter ao menos, 8 caracteres!');
+      this.cadastro = {};
+      this.generoFeminino = false;
+      this.generoMasculino = false;
+      return;
     }
       const conta: Conta = {
       email: this.cadastro.email,
