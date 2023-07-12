@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+#formulario{
+    margin: 0px;
+    display: flex;
+ flex-wrap: wrap;
+    margin-right: 0px;
+    padding: 0px;
+    width:100%;
+    margin-left: 2% ;
+}
+h1{
+    font-family: 'Chonburi', cursive;
+    font-size: 55px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0px;
+    margin: 10px;
+    background-color: #13192100;
+    text-align: center;
+
+
+
+}
+form{
+ 
+    margin: 5%;
+    text-align: left;
+    border: 5px solid #EFEFEF;
+    padding: 2%;
+    font-family: 'Didact Gothic', sans-serif;
+    margin-bottom: 2%; 
+    background-color: #dbdada;
+    border-radius: 30px;
+    position: relative;
+    text-align: left;
+    margin-top: 1%;
+}
+p{
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 40px;
+    margin: 0px;
+  
+    padding: 0px;
+}
+label{
+    font-size: 25px;
+    text-align: left;
+}
+button{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    border-color: #131921;
+    background-color: #131921;
+    color: white;
+    cursor: pointer;
+    font-family: 'Cinzel Decorative', cursive;
+    justify-self: center;
+    
+}
+
+#form2{
+    
+    display: inline-block;
+    padding: 2%;
+    width: 40%;
+   vertical-align: top; 
+    
+    
+    
+}
+#form1{
+    width: 25%;
+    display: inline-block;
+    margin-left: 7%;
+    
+   
+}
+.fileira{
+    margin: 5px;
+    margin-right: 15%;
+   
+}
+#container{
+    display: flex;
+    flex-wrap: wrap;
+   
+    margin: 5px;
+}
+.container-botao{
+
+    display: flex;
+  justify-content: flex-end;
+
+  margin: 0px;
+   
+}
+.subtitulo{
+    width: 45%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
+    text-align: left;
+    border: 5px solid #EFEFEF;
+    margin: 2%;
+    padding-left: 3%;
+    margin-left: 0PX;
+    font-family: 'Didact Gothic', sans-serif;
+    background-color: #8d8d8db6;
+    border-radius: 30px;
+    position: relative;
+    text-align: left;
+    font-size: 40px;
+    font-weight:400;
+    text-transform: uppercase;
+    color: white;
+
+}
+.resposta{
+       font-family: 'Cinzel Decorative', cursive;
+       font-size: 55px;
+       font-weight: 100;
+       letter-spacing: 2px;
+       text-transform: uppercase;
+       padding: 0px;
+       margin: 10px;
+       background-color: #13192100;
+       text-align: center;
+}
+img{
+    height: 45%;
+    width: 70%;
+    justify-content: center;
+}
+a{
+    background-color: #13192100;
+
+}
+#resultados{
+    display: flex;
+    justify-content: center;
+
+}
+.combinacoes{
+    width:13%; 
+    height:100px; 
+    display:inline-block; 
+    border: 2px solid ; 
+    border-color: #dbdada;
+    margin: 15px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+#combinacoesResult{
+    display: flex;
+    justify-content: center;
+}
