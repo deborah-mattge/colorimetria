@@ -12,7 +12,6 @@
 </head>
 
 <body>
-  <div *ngIf="paginaAtual === 'quiz'">
     <h1>QUIZ COLORAÇÃO PESSOAL</h1>
 
     <div id="tudo">
@@ -63,134 +62,8 @@
       </div>
     </div>
 
-    <div class="botao">
-      <button (click)="salvarRespostas()">mostrar resultados</button>
-    </div>
-
-
-  </div>
-
-  <div *ngIf="paginaAtual === 'resultados'">
-
-    <div class="subtitulo">Sua paleta de cores é:</div>
-    <h1 class="resposta">{{ textoEspecifico }}</h1>
-    <!-- <p>Tom de pele: {{ respostas?.respostaPele }}</p>
-    <p>Tom de cabelo: {{ respostas?.respostaCabelo }}</p>
-    <p>Cor dos olhos: {{ respostas?.respostaOlhos }}</p>
-    <p>Cor das veias: {{ respostas?.respostaVeias }}</p>  -->
-    
-  <ng-container *ngIf="textoEspecifico === 'Primavera Quente'" class="imagens">
-    <div class="imagensRespostas">
-        <img [src]="'src/assets/primaveraq.jpg'">
-    </div>
-    <div class="subtitulo">Sua cor para acessórios é:</div>
-    <div class="imagensRespostas">
-      <img [src]="'src/assets/dourado.jpg'" class="joias">
-    </div>
-  </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Primavera Intensa'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/primaverai.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/dourado.jpg'" class="joias">
-      </div>
-    </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Primavera Clara'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/primaverac.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/prata.jpg'" class="joias">
-      </div>
-    </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Outono Quente'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/outonoq.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/dourado.jpg'" class="joias">
-      </div>
-    </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Outono Profundo'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/outonop.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/dourado.jpg'" class="joias">
-      </div>
-    </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Outono Intenso'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/outonoi.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/prata.jpg'" class="joias">
-      </div>
-    </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Verão Puro'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/veraop.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/prata.jpg'" class="joias">
-      </div>
-    </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Verão Claro'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/veraoclaro.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/prata.jpg'" class="joias">
-      </div>
-    </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Verão Quente'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/veraoq.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/prata.jpg'" class="joias">
-      </div>
-    </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Inverno Profundo'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/invernoprof.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/prata.jpg'" class="joias">
-      </div>
-    </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Inverno Suave'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/invernosuave.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/prata.jpg'" class="joias">
-      </div>
-    </ng-container>
-    <ng-container *ngIf="textoEspecifico === 'Inverno Puro'">
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/invernopuro.jpg'">
-      </div>
-      <div class="subtitulo">Sua cor para acessórios é:</div>
-      <div class="imagensRespostas">
-        <img [src]="'src/assets/prata.jpg'" class="joias">
-      </div>
-    </ng-container>
-
-    <button (click)="trocarPagina('quiz')">voltar para o quiz</button>
-  </div>
-
+      <div class="botao" *ngIf="respostaFalso!=falso"><button (click)="salvarRespostas()">
+        mostrar resultados</button></div>
 </body>
 
 </html>

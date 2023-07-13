@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { ContaComponent } from '../conta/conta.component';
-import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -15,19 +14,11 @@ export class QuizComponent implements OnInit {
   textoEspecifico: string = '';
   imagemEspecifica: string;
   respostasPaletas: any = {};
-  
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private contaComponent: ContaComponent
-  ) {}
+  respostaFalso = true;
+  private resultadoQuiz: string | null = null;
 
+  constructor(private authService: AuthService, private contaComponent: ContaComponent) {}
 
-
-  trocarPagina(pagina: string) {
-    this.paginaAtual = pagina;
-    localStorage.setItem('paginalist', JSON.stringify(this.paginaAtual))
-  }
 
   salvarRespostas(): void {
     this.respostas = {}; // Limpa o objeto de respostas antes de salvar as novas
@@ -55,11 +46,23 @@ export class QuizComponent implements OnInit {
     if (veias) {
       this.respostas.respostaVeias = veias.value;
     }
-    localStorage.setItem('respostas', JSON.stringify(this.respostas));
-    this.exibirTextoEspecifico();
-    this.trocarPagina('resultados');
 
-    console.log(this.respostas); // Exibe as respostas no console
+    if(this.respostas.respostaVeias == null ||
+      this.respostas.respostaOlhos == null ||
+      this.respostas.respostaCabelo == null ||
+      this.respostas.respostaPele == null ){
+        
+        localStorage.setItem('falsoResposta', JSON.stringify(false));
+        alert("Você precisa preencher todo o formulário!")
+      }else{
+
+        window.location.replace("/resultados")
+        localStorage.setItem('respostas', JSON.stringify(this.respostas));
+        this.exibirTextoEspecifico();
+
+    console.log(this.respostas); 
+    
+      }
   }
 
   ngOnInit(): void {
@@ -72,10 +75,7 @@ export class QuizComponent implements OnInit {
     if (respostas2String) {
       this.respostasPaletas = JSON.parse(respostas2String);
     }
-    const pagina = localStorage.getItem('paginaAtual');
-    if (pagina) {
-      this.paginaAtual = JSON.parse(pagina);
-    }
+
   }
 
   exibirTextoEspecifico(): void {
@@ -133,6 +133,8 @@ export class QuizComponent implements OnInit {
     this.textoEspecifico = 'Outono Quente';
   } else if (respostaPele === 'neutra' && respostaCabelo === 'ruivo' && respostaOlhos === 'azul' && respostaVeias === 'azul') {
     this.textoEspecifico = 'Outono Quente';
+  } else if (respostaPele === 'neutra' && respostaCabelo === 'castanho' && respostaOlhos === 'castanho' && respostaVeias === 'verde') {
+    this.textoEspecifico = 'Outono Quente';
     //outono profundo
   } else if (respostaPele === 'quente' && respostaCabelo === 'preto' && respostaOlhos === 'preto' && respostaVeias === 'verde') {
     this.textoEspecifico = 'Outono Profundo';
@@ -169,6 +171,10 @@ export class QuizComponent implements OnInit {
     this.textoEspecifico = 'Outono Intenso';
   } else if (respostaPele === 'quente' && respostaCabelo === 'ruivo' && respostaOlhos === 'castanho' && respostaVeias === 'azul') {
     this.textoEspecifico = 'Outono Intenso';
+  } else if (respostaPele === 'quente' && respostaCabelo === 'ruivo' && respostaOlhos === 'verde' && respostaVeias === 'verde') {
+    this.textoEspecifico = 'Outono Intenso';
+  } else if (respostaPele === 'quente' && respostaCabelo === 'ruivo' && respostaOlhos === 'verde' && respostaVeias === 'azul') {
+    this.textoEspecifico = 'Outono Intenso';
     //verão puro
   }else if (respostaPele === 'fria' && respostaCabelo === 'loiro' && respostaOlhos === 'verde' && respostaVeias === 'verde') {
     this.textoEspecifico = 'Verão Puro';
@@ -199,6 +205,10 @@ export class QuizComponent implements OnInit {
   } else if (respostaPele === 'neutra' && respostaCabelo === 'loiro' && respostaOlhos === 'verde' && respostaVeias === 'verde') {
     this.textoEspecifico = 'Verão Quente';
   } else if (respostaPele === 'neutra' && respostaCabelo === 'loiro' && respostaOlhos === 'castanho' && respostaVeias === 'verde') {
+    this.textoEspecifico = 'Verão Quente';
+  } else if (respostaPele === 'neutra' && respostaCabelo === 'castanho' && respostaOlhos === 'castanho' && respostaVeias === 'verde') {
+    this.textoEspecifico = 'Verão Quente';
+  } else if (respostaPele === 'neutra' && respostaCabelo === 'castanho' && respostaOlhos === 'castanho' && respostaVeias === 'azul') {
     this.textoEspecifico = 'Verão Quente';
     //inverno profundo
   } else if (respostaPele === 'fria' && respostaCabelo === 'preto' && respostaOlhos === 'verde' && respostaVeias === 'verde') {

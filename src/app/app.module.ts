@@ -10,6 +10,7 @@ import { ContaComponent } from "./conta/conta.component";
 import { QuizComponent } from './quiz/quiz.component';
 import { CombinacoesComponent } from './combinacoes/combinacoes.component';
 import { AppRoutingModule } from './approuting.module';
+import { ResultadosComponent } from './resultados/resultados.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './approuting.module';
     TelaInicialComponent,
     ContaComponent,
     QuizComponent,
-    CombinacoesComponent
+    CombinacoesComponent,
+    ResultadosComponent
   ],
   imports: [
     BrowserModule,

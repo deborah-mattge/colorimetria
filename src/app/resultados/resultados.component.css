@@ -17,41 +17,6 @@ body{
     display: flex;
     justify-content: center;
 }
-form{
-    margin: 5%;
-    width: 30%;
-    text-align: left;
-    border: 5px solid #EFEFEF;
-    padding: 2%;
-    font-family: 'Didact Gothic', sans-serif;
-    margin-bottom: 2%; 
-    background-color: #dbdada;
-    border-radius: 30px;
-    position: relative;
-    text-align: left;
-    margin-top: 3%;
-}
-#formulario{
-    margin: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: 0px;
-    padding: 0px;
-    width:100%;
-    margin-left: 2% ;
-}
-#form1{
-    margin-left: 5%;
-}
-#form3{
-    margin-left: 5%;
-}
-#form4{
-    margin-right: 0px;
-}
-#form2{
-    margin-right: 0px;
-}
 
 h1{
     font-family: 'Chonburi', cursive;
