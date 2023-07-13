@@ -7,6 +7,7 @@ interface Conta {
   email: string;
   senha: string;
   nomeCompleto: string;
+  dataNascimento: string;
   genero: string;
   tipoPaleta : string;
 }
@@ -50,23 +51,32 @@ export class ContaComponent implements OnInit {
   }
 
   cadastrar() {
-    if (this.cadastro.email.indexOf("@") === -1 || this.cadastro.email.indexOf(".") === -1) {
+    console.log("socoroo")
+    if (!this.cadastro.email || this.cadastro.email.indexOf("@") === -1 || this.cadastro.email.indexOf(".") === -1) {
       alert('O email informado é inválido!');
       this.cadastro = {};
       this.generoFeminino = false;
       this.generoMasculino = false;
       return;
-    } else if(this.cadastro.senha.length<8){
+    } if(this.cadastro.senha.length<8){
       alert('A senha deve conter ao menos, 8 caracteres!');
       this.cadastro = {};
       this.generoFeminino = false;
       this.generoMasculino = false;
+      console.log("senha errada")
+      return;
+    }
+    if (this.cadastro.nomeCompleto.trim() == '' || this.cadastro.senha.trim() == '' || 
+        this.cadastro.email.trim() == '' || this.cadastro.dataNascimento.trim() == '') {
+      alert('Todos os espaços devem ser preenchidos!');
+      console.log("tudo errado")
       return;
     }
       const conta: Conta = {
       email: this.cadastro.email,
       senha: this.cadastro.senha,
       nomeCompleto: this.cadastro.nomeCompleto,
+      dataNascimento: this.cadastro.dataNascimento, 
       genero: this.generoFeminino ? 'Feminino' : (this.generoMasculino ? 'Masculino' : ''),
       tipoPaleta : null
     };
@@ -89,6 +99,7 @@ export class ContaComponent implements OnInit {
       this.generoFeminino = false;
       this.generoMasculino = false;
     }
+    console.log("deu certo?")
     this.authService.setContaCadastrada(false);
   }
 
@@ -136,6 +147,7 @@ export class ContaComponent implements OnInit {
     this.cadastro.email='';
     this.cadastro.senha='';
   }
+  
 
   salvarLocalStorage() {
     localStorage.setItem("contas", JSON.stringify(this.listaContas));
