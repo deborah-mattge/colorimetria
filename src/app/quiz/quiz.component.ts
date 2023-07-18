@@ -10,7 +10,7 @@ import { ContaComponent } from '../conta/conta.component';
 export class QuizComponent implements OnInit {
 
   paginaAtual: string = 'quiz';
-  respostas: any = {}; // Objeto para armazenar as respostas
+  respostas: any = {}; 
   textoEspecifico: string = '';
   imagemEspecifica: string;
   respostasPaletas: any = {};
