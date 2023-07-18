@@ -23,6 +23,9 @@ h1{
 
 
 
+
+
+
 }
 form{
  
@@ -31,7 +34,7 @@ form{
     border: 5px solid #EFEFEF;
     padding: 2%;
     font-family: 'Didact Gothic', sans-serif;
-    margin-bottom: 2%; 
+    margin-bottom: 2%;
     background-color: #dbdada;
     border-radius: 30px;
     position: relative;
@@ -42,7 +45,7 @@ p{
     font-family: 'Didact Gothic', sans-serif;
     font-size: 40px;
     margin: 0px;
-  
+ 
     padding: 0px;
 }
 label{
@@ -64,24 +67,25 @@ button{
     cursor: pointer;
     font-family: 'Cinzel Decorative', cursive;
     justify-self: center;
-    
+   
 }
 
+
 #form2{
-    
+   
     display: inline-block;
     padding: 2%;
     width: 40%;
-   vertical-align: top; 
-    
-    
-    
+   vertical-align: top;
+   
+   
+   
 }
 #form1{
     width: 25%;
     display: inline-block;
     margin-left: 7%;
-    
+   
    
 }
 .fileira{
@@ -97,14 +101,16 @@ button{
 }
 .container-botao{
 
+
     display: flex;
   justify-content: flex-end;
+
 
   margin: 0px;
    
 }
 .subtitulo{
-    width: 45%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
+    width: 45%;
     text-align: left;
     border: 5px solid #EFEFEF;
     margin: 2%;
@@ -119,6 +125,7 @@ button{
     font-weight:400;
     text-transform: uppercase;
     color: white;
+
 
 }
 .resposta{
@@ -140,17 +147,19 @@ img{
 a{
     background-color: #13192100;
 
+
 }
 #resultados{
     display: flex;
     justify-content: center;
 
+
 }
 .combinacoes{
-    width:13%; 
-    height:100px; 
-    display:inline-block; 
-    border: 2px solid ; 
+    width:13%;
+    height:100px;
+    display:inline-block;
+    border: 2px solid ;
     border-color: #dbdada;
     margin: 15px;
     justify-content: center;
@@ -160,3 +169,4 @@ a{
     display: flex;
     justify-content: center;
 }
+
