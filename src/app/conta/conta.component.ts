@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { EncrDecrService } from '../services/AESEncryptDecryptService';
+
 
 
 interface Conta {
@@ -28,7 +30,10 @@ export class ContaComponent implements OnInit {
   contaExistente: boolean = false;
   pagina: string = 'login';
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService,
+    private EncrDecr: EncrDecrService) { }
+
+    
 
   ngOnInit() {
     const contas = localStorage.getItem('contas');
@@ -36,6 +41,7 @@ export class ContaComponent implements OnInit {
       this.listaContas = JSON.parse(contas);
     }
   }
+
   valida() {
     if (this.pagina == 'login') {
       this.pagina = 'cadastro';
@@ -51,6 +57,7 @@ export class ContaComponent implements OnInit {
   }
 
   cadastrar() {
+
     const resultadoValidacao = 
     this.validar(this.cadastro.email, this.cadastro.senha, 
                  this.cadastro.nomeCompleto, this.cadastro.dataNascimento,
@@ -72,6 +79,7 @@ export class ContaComponent implements OnInit {
           contaExistente = true;
           break;
         }
+
       }
       if (contaExistente) {
         alert("Esta conta já está cadastrada!");
@@ -85,6 +93,7 @@ export class ContaComponent implements OnInit {
       }
       this.authService.setContaCadastrada(false);
     }
+ 
   }
 
 
@@ -108,20 +117,24 @@ export class ContaComponent implements OnInit {
     }
   }
 
-  login() {
-    const emailLogin = this.cadastro.email;
-    const senhaLogin = this.cadastro.senha;
-    for (const conta of this.listaContas) {
-      if (conta.email === emailLogin && conta.senha === senhaLogin) {
+login() {
+  const emailLogin = this.cadastro.email;
+  const senhaLogin = this.cadastro.senha;
+  for (const conta of this.listaContas) {
+    const emailSemCriptografia = this.EncrDecr.get('123456$#@$^@1ERF', conta.email);
+    if (emailSemCriptografia === emailLogin.toString()) {
+      const senhaSemCriptografia = this.EncrDecr.get('123456$#@$^@1ERF', conta.senha);
+      if (senhaSemCriptografia === senhaLogin.toString()) { 
         this.contaCadastrada = 1;
+
         this.contaLogada = conta;
         localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
+
         break;
-      } else {
-        this.contaCadastrada = 3;
       }
     }
-    localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
+  }
+
 
     if (this.contaCadastrada == 1) {
       this.authService.setContaCadastrada(true);
@@ -137,6 +150,7 @@ export class ContaComponent implements OnInit {
   salvarLocalStorage() {
     localStorage.setItem("contas", JSON.stringify(this.listaContas));
   }
+
 
   validar(email, senha, nomeCompleto, dataNascimento, genero): boolean{
     console.log(genero)
@@ -175,5 +189,6 @@ export class ContaComponent implements OnInit {
  
 }
 
+}
 
 

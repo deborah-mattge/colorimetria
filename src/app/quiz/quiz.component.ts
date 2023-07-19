@@ -10,19 +10,15 @@ import { ContaComponent } from '../conta/conta.component';
 export class QuizComponent implements OnInit {
 
   paginaAtual: string = 'quiz';
-  respostas: any = {}; // Objeto para armazenar as respostas
+  respostas: any = {}; 
   textoEspecifico: string = '';
   imagemEspecifica: string;
   respostasPaletas: any = {};
+  respostaFalso = true;
   private resultadoQuiz: string | null = null;
 
   constructor(private authService: AuthService, private contaComponent: ContaComponent) {}
 
-
-
-  trocarPagina(pagina: string) {
-    this.paginaAtual = pagina;
-  }
 
   salvarRespostas(): void {
     this.respostas = {}; // Limpa o objeto de respostas antes de salvar as novas
@@ -50,11 +46,23 @@ export class QuizComponent implements OnInit {
     if (veias) {
       this.respostas.respostaVeias = veias.value;
     }
-    localStorage.setItem('respostas', JSON.stringify(this.respostas));
-    this.exibirTextoEspecifico();
-    this.trocarPagina('resultados');
 
-    console.log(this.respostas); // Exibe as respostas no console
+    if(this.respostas.respostaVeias == null ||
+      this.respostas.respostaOlhos == null ||
+      this.respostas.respostaCabelo == null ||
+      this.respostas.respostaPele == null ){
+        
+        localStorage.setItem('falsoResposta', JSON.stringify(false));
+        alert("Você precisa preencher todo o formulário!")
+      }else{
+
+        window.location.replace("/resultados")
+        localStorage.setItem('respostas', JSON.stringify(this.respostas));
+        this.exibirTextoEspecifico();
+
+    console.log(this.respostas); 
+    
+      }
   }
 
   ngOnInit(): void {
@@ -67,6 +75,7 @@ export class QuizComponent implements OnInit {
     if (respostas2String) {
       this.respostasPaletas = JSON.parse(respostas2String);
     }
+
   }
 
   exibirTextoEspecifico(): void {
@@ -162,6 +171,10 @@ export class QuizComponent implements OnInit {
     this.textoEspecifico = 'Outono Intenso';
   } else if (respostaPele === 'quente' && respostaCabelo === 'ruivo' && respostaOlhos === 'castanho' && respostaVeias === 'azul') {
     this.textoEspecifico = 'Outono Intenso';
+  } else if (respostaPele === 'quente' && respostaCabelo === 'ruivo' && respostaOlhos === 'verde' && respostaVeias === 'verde') {
+    this.textoEspecifico = 'Outono Intenso';
+  } else if (respostaPele === 'quente' && respostaCabelo === 'ruivo' && respostaOlhos === 'verde' && respostaVeias === 'azul') {
+    this.textoEspecifico = 'Outono Intenso';
     //verão puro
   }else if (respostaPele === 'fria' && respostaCabelo === 'loiro' && respostaOlhos === 'verde' && respostaVeias === 'verde') {
     this.textoEspecifico = 'Verão Puro';
@@ -192,6 +205,10 @@ export class QuizComponent implements OnInit {
   } else if (respostaPele === 'neutra' && respostaCabelo === 'loiro' && respostaOlhos === 'verde' && respostaVeias === 'verde') {
     this.textoEspecifico = 'Verão Quente';
   } else if (respostaPele === 'neutra' && respostaCabelo === 'loiro' && respostaOlhos === 'castanho' && respostaVeias === 'verde') {
+    this.textoEspecifico = 'Verão Quente';
+  } else if (respostaPele === 'neutra' && respostaCabelo === 'castanho' && respostaOlhos === 'castanho' && respostaVeias === 'verde') {
+    this.textoEspecifico = 'Verão Quente';
+  } else if (respostaPele === 'neutra' && respostaCabelo === 'castanho' && respostaOlhos === 'castanho' && respostaVeias === 'azul') {
     this.textoEspecifico = 'Verão Quente';
     //inverno profundo
   } else if (respostaPele === 'fria' && respostaCabelo === 'preto' && respostaOlhos === 'verde' && respostaVeias === 'verde') {

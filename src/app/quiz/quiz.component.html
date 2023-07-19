@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
   <div *ngIf="paginaAtual === 'quiz'">
     <h1>QUIZ COLORAÇÃO PESSOAL</h1>
 
@@ -20,6 +21,21 @@
         melhor!</p>
       <div id="formulario">
         <form id="form1">
+
+          <button (click)="modal.toggle()" class="botao_modal">?</button>
+          <app-modal #modal>
+            <h1 >como saber seu tom de pele?</h1>
+            <p class="texto_modal">
+              Característica de temperatura da pele: 
+              <br>
+              Ela pode ser dividida em três tipos principais, cores quentes, cores frias e cores neutras.
+              <br>
+             O tom neutro fica no meio termo. A  pele em tons quentes possui um tom mais amarelado e esverdeado e a pele em tons frios possui aspecto mais rosado e avermelhado.
+             <img [src]="'src/assets/tonsDePele.png'" class="imagem_modal">
+             <br>
+            Se você bronzeia facilmente e raramente fica com queimaduras solares, provavelmente tem um tom de pele quente. Se você queima facilmente e tem dificuldade em bronzear, é mais provável que tenha um tom de pele frio. Se você bronzeia um pouco, mas também pode ficar com queimaduras solares, seu tom de pele pode ser neutro.
+            </p>
+          </app-modal>
           <p>Qual é o seu tom de pele?</p>
           <input type="radio" id="pele1" name="pele" value="fria">
           <label for="pele1">Fria</label><br>
@@ -28,7 +44,6 @@
           <input type="radio" id="pele3" name="pele" value="neutra">
           <label for="pele3">Neutra</label><br>
         </form>
-
         <form id="form2">
           <p>Qual é o seu tom de cabelo?</p>
           <input type="radio" id="cabelo1" name="cabelo" value="preto">
@@ -190,6 +205,8 @@
 
     <button (click)="trocarPagina('quiz')">voltar para o quiz</button>
   </div>
+ 
+
 
 </body>
 
