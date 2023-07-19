@@ -8,7 +8,7 @@ interface Conta {
   senha: string;
   nomeCompleto: string;
   genero: string;
-  tipoPaleta: string;
+  tipoPaleta : string;
 }
 
 @Component({
@@ -18,34 +18,32 @@ interface Conta {
 })
 export class AppComponent {
   title = 'colorimetria';
-  constructor(private router: Router, private authService: AuthService, private contaComponent: ContaComponent) { }
+  constructor(private router: Router, private authService: AuthService, private contaComponent: ContaComponent){}
 
-  contaCadastrada: number;
-  contaLogada: Conta[] = [];
+  contaCadastrada : number;
+  contaLogada: Conta[]=[];
 
-  permissao() {
-    if (this.contaCadastrada === 3) {
+  permissao(){
+    if(this.contaCadastrada===3){
       alert("É necessário fazer o login para ter acesso a está página!")
     }
   }
 
   logout() {
-    var reposta;
-    var r = confirm("Deseja mesmo fazer logout?");
-    if (r == true) {
-      reposta = "Sim!";
-      this.router.navigate(['/login']);
+    const confirmLogout = window.confirm('Tem certeza que deseja fazer logout?');
+  
+    if (confirmLogout) {
+      this.router.navigate(['/conta']);
       this.contaCadastrada = 3;
       this.contaLogada = null;
       localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
       localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
       this.authService.setContaCadastrada(false);
-      this.contaLogada.splice[0]
-    }
-    else {
-      reposta = "Não!";
-      this.contaCadastrada=1;
-      this.authService.setContaCadastrada(true);
+      console.log('Logout realizado com sucesso.');
+    } else {
+      console.log('Logout cancelado.');
     }
   }
+  
+
 }
