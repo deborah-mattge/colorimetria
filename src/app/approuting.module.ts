@@ -4,7 +4,7 @@ import { ContaComponent } from './conta/conta.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { CombinacoesComponent } from './combinacoes/combinacoes.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './services/auth.guard';
 import { ResultadosComponent } from './resultados/resultados.component';
 
 const rotas: Routes = [

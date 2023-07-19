@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ContaComponent } from './conta/conta.component';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 
 interface Conta {
