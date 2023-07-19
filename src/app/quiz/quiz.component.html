@@ -22,9 +22,12 @@
       <div id="formulario">
         <form id="form1">
 
-          <button (click)="modal.toggle()" class="botao_modal">?</button>
+          <div style="display: flex; flex-direction:row">
+            <p>Qual é o seu tom de pele?</p>
+             <button (click)="modal.toggle()" class="botao_modal">?</button>
+           </div>
           <app-modal #modal>
-            <h1 >como saber seu tom de pele?</h1>
+         
             <p class="texto_modal">
               Característica de temperatura da pele: 
               <br>

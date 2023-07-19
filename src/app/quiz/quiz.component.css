@@ -120,12 +120,17 @@
     justify-content: center;
   }
   .botao_modal{
-    margin: 0px;
-    padding: 0px;
+
+     margin: 0;
+    margin-left: 10px;
+   padding: 0px;
     padding-left: 5px;
     padding-right: 5px;
-
-  }
+    border-radius: 100px;
+    background-color: #13192144;
+     border: #13192100;
+    
+    }
   .imagem_modal{
     margin-left: 80px;
   }
