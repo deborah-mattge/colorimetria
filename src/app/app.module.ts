@@ -8,6 +8,8 @@ import { QuizComponent } from './quiz/quiz.component';
 import { CombinacoesComponent } from './combinacoes/combinacoes.component';
 import { AppRoutingModule } from './approuting.module';
 import { ModalModule } from './modal/modal.module';
+import { ResultadosComponent } from './resultados/resultados.component';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { ModalModule } from './modal/modal.module';
     TelaInicialComponent,
     ContaComponent,
     QuizComponent,
-    CombinacoesComponent
+    CombinacoesComponent,
+    ResultadosComponent
   ],
   imports: [
     BrowserModule,
