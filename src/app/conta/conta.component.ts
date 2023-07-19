@@ -9,6 +9,7 @@ interface Conta {
   email: string;
   senha: string;
   nomeCompleto: string;
+  dataNascimento: string;
   genero: string;
   tipoPaleta : string;
 }
@@ -62,11 +63,26 @@ export class ContaComponent implements OnInit {
   }
 
   cadastrar() {
-    if (this.cadastro.email.indexOf("@") === -1 || this.cadastro.email.indexOf(".") === -1) {
+
+    console.log("socoroo")
+    if (!this.cadastro.email || this.cadastro.email.indexOf("@") === -1 || this.cadastro.email.indexOf(".") === -1) {
       alert('O email informado é inválido!');
       this.cadastro = {};
       this.generoFeminino = false;
       this.generoMasculino = false;
+      return;
+    } if(this.cadastro.senha.length<8){
+      alert('A senha deve conter ao menos, 8 caracteres!');
+      this.cadastro = {};
+      this.generoFeminino = false;
+      this.generoMasculino = false;
+      console.log("senha errada")
+      return;
+    }
+    if (this.cadastro.nomeCompleto.trim() == '' || this.cadastro.senha.trim() == '' || 
+        this.cadastro.email.trim() == '' || this.cadastro.dataNascimento.trim() == '') {
+      alert('Todos os espaços devem ser preenchidos!');
+      console.log("tudo errado")
       return;
     }
   
@@ -74,6 +90,7 @@ export class ContaComponent implements OnInit {
       email: this.EncrDecr.set('123456$#@$^@1ERF', this.cadastro.email),
       senha: this.EncrDecr.set('123456$#@$^@1ERF', this.cadastro.senha), 
       nomeCompleto: this.cadastro.nomeCompleto,
+      dataNascimento: this.cadastro.dataNascimento, 
       genero: this.generoFeminino ? 'Feminino' : (this.generoMasculino ? 'Masculino' : ''),
       tipoPaleta : null
     };
@@ -96,6 +113,8 @@ export class ContaComponent implements OnInit {
       this.generoFeminino = false;
       this.generoMasculino = false;
     }
+
+    console.log("deu certo?")
     this.authService.setContaCadastrada(false);
   }
 
@@ -134,21 +153,17 @@ login() {
     }
   }
 
-  if (this.contaCadastrada === 3) {
+
+    if (this.contaCadastrada == 1) {
+      this.authService.setContaCadastrada(true);
+    } else {
+      alert("Email ou senha inválidos!")
+      this.authService.setContaCadastrada(false);
+    }
+    this.cadastro.email='';
+    this.cadastro.senha='';
   }
-
-  localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
-
-  if (this.contaCadastrada === 1) {
-    this.authService.setContaCadastrada(true);
-  } else {
-    alert("Email ou senha inválidos!");
-    this.authService.setContaCadastrada(false);
-  }
-
-  this.cadastro.email = '';
-  this.cadastro.senha = '';
-}
+  
 
   salvarLocalStorage() {
     localStorage.setItem("contas", JSON.stringify(this.listaContas));
