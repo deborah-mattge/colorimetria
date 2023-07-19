@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
   <div *ngIf="paginaAtual === 'quiz'">
     <h1>QUIZ COLORAÇÃO PESSOAL</h1>
 
@@ -28,7 +29,6 @@
           <input type="radio" id="pele3" name="pele" value="neutra">
           <label for="pele3">Neutra</label><br>
         </form>
-
         <form id="form2">
           <p>Qual é o seu tom de cabelo?</p>
           <input type="radio" id="cabelo1" name="cabelo" value="preto">
@@ -190,6 +190,7 @@
 
     <button (click)="trocarPagina('quiz')">voltar para o quiz</button>
   </div>
+
 
 </body>
 

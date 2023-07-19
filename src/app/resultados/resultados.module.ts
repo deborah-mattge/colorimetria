@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EncrDecrService } from '../services/AESEncryptDecryptService';
 
 
 
@@ -8,7 +7,6 @@ import { EncrDecrService } from '../services/AESEncryptDecryptService';
   declarations: [],
   imports: [
     CommonModule
-  ],
-  providers: [EncrDecrService],
+  ]
 })
-export class ContaModule { }
+export class ResultadosModule { }

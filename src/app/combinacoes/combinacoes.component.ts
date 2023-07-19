@@ -60,7 +60,7 @@ export class CombinacoesComponent implements OnInit {
       Branco:'branco',
       Preto:'preto',
       Cinza:'cinza',
-     
+
     };
     const combinacoes = {
       'Inverno Profundo': 'ip',
