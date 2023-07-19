@@ -94,6 +94,11 @@
     justify-content: center;
     margin: 0;
   }
+  .texto_modal{
+    text-align: justify;
+    font-size: 2  5px;
+
+  }
  
   .joias {
     height: 15%;
@@ -110,6 +115,16 @@
   #ng-container {
     display: flex;
     justify-content: center;
+  }
+  .botao_modal{
+    margin: 0px;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+  }
+  .imagem_modal{
+    margin-left: 80px;
   }
  
 
