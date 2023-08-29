@@ -2,13 +2,11 @@
     <nav>
       <a href="http://localhost:4200/telainicial" class="botoes" (click)="cadastrarTarefa()">Tela Incial</a>
         <a href="http://localhost:4200/conta" class="botoes" (click)="cadastrarCategorias()">Conta</a>
-        <a href="http://localhost:4200/quiz" class="botoes"  (click)="cadastrarCategorias()">Quiz</a>
+        <a href="http://localhost:4200/quiz" class="botoes" (click)="permissao()" (click)="cadastrarCategorias()">Quiz</a>
         <a href="http://localhost:4200/combinacoes" class="botoes" (click)="cadastrarCategorias()">Combinações</a>
-        <button (click)="logout()">Logout</button>
-        
+        <a class="botoes" (click)="logout()" id="logout">Logout</a>
     </nav>
   </header>
   <body>
-  
-  </body>
-  <router-outlet></router-outlet>
+</body>
+<router-outlet></router-outlet>

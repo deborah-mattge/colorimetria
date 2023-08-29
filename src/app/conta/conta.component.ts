@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
+import { EncrDecrService } from '../services/AESEncryptDecryptService';
+
+
 
 interface Conta {
   email: string;
   senha: string;
   nomeCompleto: string;
+  dataNascimento: string;
   genero: string;
-  tipoPaleta : string;
+  tipoPaleta: string;
 }
 
 @Component({
@@ -17,24 +21,25 @@ interface Conta {
 })
 export class ContaComponent implements OnInit {
 
-  mensagemContaCadastrada: string = '';
-  contaLogada: Conta[]=[];
+  contaLogada: Conta;
   contaCadastrada: number;
-  nome: string;
   listaContas: Conta[] = [];
   generoFeminino = false;
   generoMasculino = false;
   cadastro: any = {};
   contaExistente: boolean = false;
   pagina: string = 'login';
-  respostasPaletas: any= {};
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService,
+    private EncrDecr: EncrDecrService) { }
 
-  ngOnInit() {}
+    
 
-  mudarPagina(page: string) {
-    this.pagina = page;
+  ngOnInit() {
+    const contas = localStorage.getItem('contas');
+    if (contas) {
+      this.listaContas = JSON.parse(contas);
+    }
   }
 
   valida() {
@@ -45,79 +50,144 @@ export class ContaComponent implements OnInit {
     }
   }
 
-  cadastrar() {
-    if (this.cadastro.email.indexOf("@") === -1 || this.cadastro.email.indexOf(".") === -1) {
-      alert('O email informado é inválido.');
-      return;
+  paginaLogada() {
+    if (this.contaCadastrada == 1) {
+      this.pagina = 'contaLogada';
     }
-      const conta: Conta = {
-      email: this.cadastro.email,
-      senha: this.cadastro.senha,
-      nomeCompleto: this.cadastro.nomeCompleto,
-      genero: this.generoFeminino ? 'Feminino' : (this.generoMasculino ? 'Masculino' : ''),
-      tipoPaleta : null
-    };
-  
-    let contaExistente = false;
-  
-    for (const c of this.listaContas) {
-      if (c.email === conta.email) {
-        console.log("Conta já cadastrada");
-        contaExistente = true;
-        break;
-      }
-    }
-  
-    if (contaExistente) {
-      alert("Esta conta já está cadastrada.");
-    } else {
-      this.listaContas.push(conta);
-      console.log(this.listaContas);
-      this.salvarLocalStorage();
-      this.contaCadastrada = 4;
-      this.cadastro = {};
-      this.generoFeminino = false;
-      this.generoMasculino = false;
-    } 
   }
+
+  cadastrar() {
+
+    const resultadoValidacao = 
+    this.validar(this.cadastro.email, this.cadastro.senha, 
+                 this.cadastro.nomeCompleto, this.cadastro.dataNascimento,
+                 this.generoFeminino ? 'Feminino' : (this.generoMasculino ? 'Masculino' : ''));
   
+    if (resultadoValidacao==true) {
+      const conta: Conta = {
+        email: this.cadastro.email,
+        senha: this.cadastro.senha,
+        nomeCompleto: this.cadastro.nomeCompleto,
+        dataNascimento: this.cadastro.dataNascimento,
+        genero: this.generoFeminino ? 'Feminino' : (this.generoMasculino ? 'Masculino' : ''),
+        tipoPaleta: null
+      };
+      let contaExistente = false;
 
-  login() {
-    const emailLogin = this.cadastro.email;
-    const senhaLogin = this.cadastro.senha;
+      for (const c of this.listaContas) {
+        if (c.email === conta.email) {
+          contaExistente = true;
+          break;
+        }
 
-    for (const conta of this.listaContas) {
-      if (conta.email === emailLogin && conta.senha === senhaLogin) {
-        this.contaCadastrada = 1;
-        this.contaLogada=this.listaContas;
-        localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
-        break;
+      }
+      if (contaExistente) {
+        alert("Esta conta já está cadastrada!");
       } else {
-        this.contaCadastrada = 3;
+        this.listaContas.push(conta);
+        this.salvarLocalStorage();
+        this.contaCadastrada = 4;
+        this.cadastro = {};
+        this.generoFeminino = false;
+        this.generoMasculino = false;
+      }
+      this.authService.setContaCadastrada(false);
+    }
+ 
+  }
+
+
+  atualizarContaLogada() {
+    const contaLogada = JSON.parse(localStorage.getItem('Conta logada'));
+    contaLogada.tipoPaleta = this.authService.getResultadoQuiz();
+    localStorage.setItem('Conta logada', JSON.stringify(contaLogada));
+
+    const listaContas = JSON.parse(localStorage.getItem('contas'));
+    if (listaContas && Array.isArray(listaContas)) {
+      this.listaContas = listaContas;
+
+      for (let i = 0; i < this.listaContas.length; i++) {
+        if (this.listaContas[i].email === contaLogada.email) {
+          this.listaContas[i].tipoPaleta = contaLogada.tipoPaleta;
+          break;
+        }
+      }
+
+      this.salvarLocalStorage();
+    }
+  }
+
+login() {
+  const emailLogin = this.cadastro.email;
+  const senhaLogin = this.cadastro.senha;
+  for (const conta of this.listaContas) {
+    const emailSemCriptografia = this.EncrDecr.get('123456$#@$^@1ERF', conta.email);
+    if (emailSemCriptografia === emailLogin.toString()) {
+      const senhaSemCriptografia = this.EncrDecr.get('123456$#@$^@1ERF', conta.senha);
+      if (senhaSemCriptografia === senhaLogin.toString()) { 
+        this.contaCadastrada = 1;
+
+        this.contaLogada = conta;
+        localStorage.setItem("Conta logada", JSON.stringify(this.contaLogada));
+
+        break;
       }
     }
-    localStorage.setItem("Número", JSON.stringify(this.contaCadastrada));
+  }
+
 
     if (this.contaCadastrada == 1) {
       this.authService.setContaCadastrada(true);
-      this.router.navigate(['/quiz']);
-      
     } else {
-      this.mensagemContaCadastrada = 'Conta não cadastrada';
+      alert("Email ou senha inválidos!")
+      this.authService.setContaCadastrada(false);
     }
-    this.cadastro.email='';
-    this.cadastro.senha='';
-    console.log(this.valida)
+    this.cadastro.email = '';
+    this.cadastro.senha = '';
   }
-  
-  
+
 
   salvarLocalStorage() {
     localStorage.setItem("contas", JSON.stringify(this.listaContas));
   }
-  logout(){
-    this.contaCadastrada=3;
-    this.authService.setContaCadastrada(false);
-  }
 
+
+  validar(email, senha, nomeCompleto, dataNascimento, genero): boolean{
+    console.log(genero)
+    if (!email.includes('.') || !email.includes('@')) {
+       alert ("Email inválido. Certifique-se de que contém pelo menos um ponto (.) e um @.");
+       return false
+    }
+  
+    // Verificar se a senha tem mais de 8 caracteres
+    if (senha.length < 8) {
+       alert ("Senha inválida. A senha deve conter mais de 8 caracteres.");
+       return false
+    }
+  
+    // Verificar se o nome tem pelo menos 6 caracteres
+    if (nomeCompleto.length < 6) {
+       alert ("Nome inválido. O nome deve conter pelo menos 6 caracteres.");
+       return false
+    }
+  
+    // Verificar se a data de nascimento foi informada
+    if (!dataNascimento) {
+       alert ("Data de nascimento não informada.");
+       return false
+    }
+  
+    // Verificar se o gênero foi informado
+    if (!genero) {
+       alert ("Gênero não informado.");
+       return false
+    }
+  
+    // Se todas as validações passaram, retornar true para indicar que os dados são válidos
+    return true;
+  }
+ 
 }
+
+
+

@@ -4,52 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
   <title>Document</title>
-
-<div id="Login" *ngIf="pagina === 'login'">
-    <input type="email" placeholder="E-mail" [(ngModel)]="cadastro.email">
-    <br>
-    <input type="password" placeholder="Senha" [(ngModel)]="cadastro.senha">
-    <br>
-    <h5 (click)="valida()">Não possuo conta</h5>
-      <a href="http://localhost:4200/quiz"><button (click)="login()" (click)="cadastrarCategorias()">COMEÇAR TESTE</button></a>
-
-      <div *ngIf="contaCadastrada===1">
-        <p>{{contaLogada.email}}</p>
-        <p>TESTE</p>
-        <h5 (click)="logout()">Sair</h5>
-      </div>
-  
+</head>
+<body>
+  <div id="Login" *ngIf="pagina === 'login'">
+    <h1>faça login</h1>
+    <div class="meio">
+      <input type="email" placeholder="E-mail" [(ngModel)]="cadastro.email" id="cima">
+      <br>
+      <input type="password" placeholder="Senha" [(ngModel)]="cadastro.senha" id="baixo">
+      <br>
+      <h5 (click)="valida()">Não possuo conta</h5>
+      <div id="comecarTeste"><a href="http://localhost:4200/quiz"><button (click)="login()" (click)="paginaLogada()" (click)="cadastrarCategorias()">COMEÇAR TESTE</button></a></div>
     </div>
-  
+  </div>
+
   <div id="Cadastro" *ngIf="pagina === 'cadastro'">
     <h1>CADASTRE-SE</h1>
+    <div class="meio2">
+      <h4>E-mail</h4>
+      <input type="email"  placeholder="Ex: maria_silva@dominio.com" [(ngModel)]="cadastro.email" class="cadastroInput">
   
-    <h4>E-mail</h4>
-    <input type="email" placeholder="Ex: maria_silva@dominio.com" [(ngModel)]="cadastro.email">
+      <h4>Senha</h4>
+      <input type="password" placeholder="Mín 8 caracteres" [(ngModel)]="cadastro.senha" class="cadastroInput">
   
-    <h4>Senha</h4>
-    <input type="password" placeholder="Senha" [(ngModel)]="cadastro.senha">
+      <h4>Nome Completo</h4>
+      <input type="text" placeholder="Ex: Maria da Silva" [(ngModel)]="cadastro.nomeCompleto" class="cadastroInput">
   
-    <h4>Nome Completo</h4>
-    <input type="text" placeholder="Ex: Maria da Silva" [(ngModel)]="cadastro.nomeCompleto">
+      <h4>Data Nascimento</h4>
+      <input type="date" name="" class="cadastroInput" [(ngModel)]="cadastro.dataNascimento" id="data">
   
-    <h4>Data Nascimento</h4>
-    <input type="date" name="">
-  
-    <h4>Gênero</h4>
-    <input type="checkbox" [(ngModel)]="generoFeminino"> Feminino
-    <input type="checkbox" [(ngModel)]="generoMasculino"> Masculino
+      <h4>Gênero</h4>
+      <div class="inputDiferente">
+        <input type="checkbox" [(ngModel)]="generoFeminino" class="genero"> Feminino
+      </div>
+      <div class="inputDiferente">
+        <input type="checkbox" [(ngModel)]="generoMasculino" class="genero"> Masculino
+      </div>
+    </div>
   
     <br><br>
     <h5 (click)="valida()">Já possuo conta</h5>
     <br>
-  
+    
     <button (click)="cadastrar()" (click)="valida()">COMEÇAR TESTE</button>
   </div>
-
   
+  
+  <div *ngIf="pagina === 'contaLogada'">
+    <h3>Você está logado!</h3>
+  </div>
+
+  <div *ngIf="pagina === 'contaLogada'">
+    <h3>Você está logado!</h3>
+  </div>
 </body>
 </html>

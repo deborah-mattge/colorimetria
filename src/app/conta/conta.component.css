@@ -1,30 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Didact+Gothic&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
-
-body{
+body {
     display: flex;
     justify-content: center;
-  
-}
-#login{
+  }
+ 
+  #login {
     display: flex;
     justify-content: center;
     margin: 5%;
-    width: 90%; /* Ajuste a largura dos formulários para ocupar 46% para deixar um espaço entre eles */
+    width: 90%;
     text-align: left;
     border: 5px solid #EFEFEF;
     padding: 2%;
     font-family: 'Didact Gothic', sans-serif;
-    margin-bottom: 2%; 
+    margin-bottom: 2%;
     background-color: #8f8a8a;
     border-radius: 30px;
     position: relative;
     text-align: left;
     margin-top: 3%;
-    
-}
-h1{
+  }
+ 
+  h1 {
     font-family: 'Chonburi', cursive;
     font-size: 58px;
     font-weight: 100;
@@ -36,11 +32,9 @@ h1{
     margin-left: 0px;
     background-color: #13192100;
     text-align: center;
-
-
-
-}
-#tituloCadastro{
+  }
+ 
+  #tituloCadastro {
     font-size: 58px;
     font-family: 'Chonburi', cursive;
     font-weight: 100;
@@ -52,11 +46,12 @@ h1{
     margin-left: 0px;
     background-color: #13192100;
     text-align: center;
-}
-button{
+  }
+ 
+  button {
     margin: 10px;
     padding: 10px;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     border-radius: 10px;
@@ -66,11 +61,10 @@ button{
     cursor: pointer;
     font-family: 'Cinzel Decorative', cursive;
     justify-self: center;
-    text-transform:lowercase;
-    
-    
-}
-.meio{
+    text-transform: lowercase;
+  }
+ 
+  .meio {
     display: block;
     justify-content: center;
     align-items: center;
@@ -81,9 +75,9 @@ button{
     border-radius: 30px;
     text-align: center;
     position: relative;
-    
-}
-input{
+  }
+ 
+  input {
     width: 70%;
     border-radius: 50px;
     border: #b1b0b0;
@@ -91,85 +85,88 @@ input{
     margin: 30px;
     background-color: #EFEFEF;
     color: #131921;
-}
-#cima{
+  }
+ 
+  #cima {
     margin-top: 50px;
-}
-#baixo{
+  }
+ 
+  #baixo {
     margin-bottom: 0px;
-}
-
-#comecarTeste{
+  }
+ 
+  #comecarTeste {
     position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 88%;
-  padding: 0px;
-  width: 70%;
-  margin: 0px;
-  display: flex;
-  justify-content: center;
-}
-h3{
+    left: 50%;
+    transform: translateX(-50%);
+    top: 88%;
+    padding: 0px;
+    width: 70%;
+    font-size: 15px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+  }
+ 
+  h3 {
     font-family: 'Didact Gothic', sans-serif;
     margin: 20px;
     cursor: pointer;
-}
-
-.cadastroInput{
-    background-color:#D9D9D9     ;
-    color: white;
+  }
+ 
+  .cadastroInput {
+    background-color: #D9D9D9;
+    color: #131921;
     margin: 5px;
     padding: 10px;
     justify-self: center;
     width: 100%;
-}
-#Cadastro{
+  }
+ 
+  #Cadastro {
     display: grid;
     text-align: center;
-
-    
-    
-}
-h4{
+  }
+ 
+  h4 {
     margin: 0px;
-    font-family: 'Didact Gothic', sans-serif
-    }
-.meio2{
+    font-family: 'Didact Gothic', sans-serif;
+  }
+ 
+  .meio2 {
     display: grid;
     place-items: center;
-   align-items: center;
+    align-items: center;
     place-items: center;
-    background-color:#EFEFEF;
-    
+    background-color: #EFEFEF;
     border: #d8d3d3;
     border-radius: 30px;
     text-align: left;
     position: relative;
-}
-
-.genero{
+  }
+ 
+  .genero {
     margin: 0px;
     width: auto;
-   
-    
-}
-#data{
+  }
+ 
+  #data {
     padding: 5px;
-}
-.inputDiferente{
-    background-color:#D9D9D9;
+  }
+ 
+  .inputDiferente {
+    background-color: #D9D9D9;
     padding: 3px;
     border-radius: 30px;
     margin-bottom: 10px;
-    
-
-}
-
-
-.teste{
-
+  }
+ 
+  .teste {
     align-items: center;
     vertical-align: middle;
+  }
+ 
+  a {
+    background-color: #13192100;
+  }
 
-}
